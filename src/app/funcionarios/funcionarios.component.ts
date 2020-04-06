@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-funcionarios',
   templateUrl: './funcionarios.component.html',
-  styleUrls: ['./funcionarios.component.css']
+  styleUrls: ['../app.component.css']
 })
-export class FuncionariosComponent {
-  title = 'Home';
-}
+
+@NgModule({
+  declarations: [FuncionariosComponent],
+  imports: [
+    FormsModule
+  ]
+})
+
+export class FuncionariosComponent {}

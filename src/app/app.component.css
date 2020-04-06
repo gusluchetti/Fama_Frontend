@@ -1,13 +1,23 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
+body {
+    background-color: aliceblue;
+}
+
 html, body {
     height: 100%;
-    margin: 0;
-    background-color: #FFC191;
+    width: 100%;
+    margin: 0px;
   }
 
 .flex {
     height: 100%;
     display: flex;
     justify-content: center;
+}
+
+.main-content {
+    min-height: 100%;
+    min-width: 100%;
+    background-color: antiquewhite;
 }

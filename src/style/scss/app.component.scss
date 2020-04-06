@@ -1,18 +1,12 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 body {
+    height: 100%;
     margin: 0;
   }
 
 .flex {
+    height: 100%;
     display: flex;
     justify-content: center;
 }
-
-.content {
-    height: 900px;
-    width: 60%;
-    background-color: #a3a3a3;
-}
-
-

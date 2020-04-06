@@ -1,24 +1,56 @@
-@import "~bootstrap/dist/css/bootstrap.css";
-
+/* COLORS */
 /*  orange -> #F9542E */
+/*  teal -> #2DFAB0*/
 /*  pastel orange -> #FA7D61 */
+/*  not quite white -> #FAFAFA */
 
-body {
-    height: 100%;
-    min-height: 100%;
-    width: 100%;
-    min-width: 100%;
-    margin: 0;
-  }
-
-.flex {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: #FA7D61;
+.align-center {
+    text-align: center;
 }
 
-.main-content {
+.flex {
+    display: flex;
+    justify-content: center;
+}
+
+.padding {
+    padding: 5px;
+}
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.navbar {
+    background-color: #fff;
+}
+
+.navbar-expand {
+    width: 100%;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+}
+
+.navbar a:hover{
+    color: #F9542E;
+}
+
+.content {
     min-height: 100%;
-    min-width: 100%;
+    width: 1110px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.input-display {
+    background: #fafafa;
+    border-radius: 6px;
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
 }

@@ -1,3 +1,21 @@
-<div>
-
+<div class="wrapper flex padding">
+    <div class="content">
+        <div *ngFor="let aluno of alunos">
+            <div class="row">
+                <div class="col-sm-7">
+                    <label>Nome: </label>
+                    <div class="input-display padding"><p>{{aluno.nomeAluno}}</p></div>
+                </div>
+                <div class="col-sm-3">
+                    <label>Aulas: </label>
+                    <div class="input-display padding"><p>{{aluno.idCurso}}</p></div>
+                </div>
+                <div class="col-sm-2">
+                    <label>Matrícula: </label>
+                    <div class="input-display padding"><p>{{aluno.idAluno}}</p></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 </div>

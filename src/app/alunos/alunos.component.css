@@ -1,0 +1,13 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #FFC191;
+  }
+
+.flex {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}

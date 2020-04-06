@@ -21,7 +21,7 @@ const routes: Routes = [
     component: FuncionariosComponent,
     data: { title: 'Funcionários' }
   },
-  { path: '',   redirectTo: '/alunos', pathMatch: 'full' }
+  { path: '',   redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({

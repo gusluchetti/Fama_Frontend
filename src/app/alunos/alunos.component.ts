@@ -1,21 +1,15 @@
-import { Component, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-alunos',
   templateUrl: './alunos.component.html',
   styleUrls: ['../app.component.css']
 })
+export class AlunosComponent implements OnInit {
 
-@NgModule({
-  declarations: [AlunosComponent],
-  imports: [
-    FormsModule
-  ]
-})
+  constructor() { }
 
-export class AlunosComponent {}
+  ngOnInit(): void {
+  }
 
-let alunos: string[] = ['teste0', 'teste1']
-console.log(alunos)
+}

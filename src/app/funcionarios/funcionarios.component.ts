@@ -1,18 +1,15 @@
-import { Component, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-funcionarios',
   templateUrl: './funcionarios.component.html',
   styleUrls: ['../app.component.css']
 })
+export class FuncionariosComponent implements OnInit {
 
-@NgModule({
-  declarations: [FuncionariosComponent],
-  imports: [
-    FormsModule
-  ]
-})
+  constructor() { }
 
-export class FuncionariosComponent {}
+  ngOnInit(): void {
+  }
+
+}

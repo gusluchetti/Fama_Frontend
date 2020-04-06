@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 @Component({
@@ -8,11 +9,6 @@ import { RouterModule, Routes } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 
-@NgModule({
-  declarations: [AppComponent],
-  imports: [
-    FormsModule
-  ]
-})
+export class AppComponent {
 
-export class AppComponent {}
+} 

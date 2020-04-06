@@ -1,1 +1,36 @@
-<p>funcionarios works!</p>
+<div class="wrapper flex">
+    <div class="content">
+        <div class="align-center margin-bot">
+            <h3>Lista de Professores</h3>
+        </div>
+        <div class="row margin-bot">
+            <div class="col-12">
+                <button type="button" class="btn btn-primary push-right">CADASTRAR FUNCIONÁRIO</button>
+            </div>
+        </div>  
+        <div class="row">
+            <div class="col-sm-7">
+                <label>Nome: </label>
+            </div>
+            <div class="col-sm-3">
+                <label>Aula: </label>
+            </div>
+            <div class="col-sm-2">
+                <label>N° SIS: </label>
+            </div>
+        </div>
+        <div *ngFor="let funcionario of funcionarios">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="input-display"><p class="padding-h">{{funcionario.nomeFuncionario}}</p></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-display"><p class="padding-h">{{funcionario.idCurso}}</p></div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="input-display"><p class="padding-h">{{funcionario.idFuncionario}}</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -17,7 +17,12 @@ export class AlunosComponent {
       idAluno: 1,
       idCurso: 'Judo',
       nomeAluno: 'Peter Parker'
-    }
+    },
+    {
+      idAluno: 2,
+      idCurso: 'Academia',
+      nomeAluno: 'Mister Mister'
+    },
   ];
-  
+
 }

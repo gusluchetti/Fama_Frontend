@@ -1,11 +1,25 @@
 /* COLORS */
 /*  orange -> #F9542E */
-/*  teal -> #2DFAB0*/
+/*  teal -> #2DFAB0 */
+/*  blue -> #1492FA */
 /*  pastel orange -> #FA7D61 */
 /*  not quite white -> #FAFAFA */
 
+
 .align-center {
     text-align: center;
+}
+
+.push-left {
+    float: left;
+}
+
+.push-right {
+    float: right;
+}
+
+.margin-bot {
+    margin-bottom: 20px;
 }
 
 .flex {
@@ -13,8 +27,14 @@
     justify-content: center;
 }
 
-.padding {
-    padding: 5px;
+.padding-v {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.padding-h {
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .wrapper {
@@ -53,4 +73,8 @@
     -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
+}
+
+.service {
+    color: #1492FA;
 }

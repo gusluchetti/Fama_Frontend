@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
   styleUrls: ['../app.component.css']
 })
-export class CursosComponent implements OnInit {
+export class CursosComponent{
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  cursos = [
+    {
+      nomeCurso: 'Karate'
+    },
+    {
+      nomeCurso: 'Arco e Flecha'
+    },
+  ];
 
 }

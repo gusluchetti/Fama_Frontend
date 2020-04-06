@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
-  styleUrls: ['../style/css/cursos.component.css']
+  styleUrls: ['./cursos.component.css']
 })
 export class CursosComponent {
   title = 'Home';

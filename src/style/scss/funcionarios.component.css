@@ -1,0 +1,27 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.flex {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-menu {
+  height: 100%;
+  width: 60%;
+  background-color: #a3a3a3;
+}
+
+.main-content {
+  height: 100%;
+  width: 60%;
+  background-color: #a3a3a3;
+}
+
+/*# sourceMappingURL=app.component.css.map */
+
+/*# sourceMappingURL=funcionarios.component.css.map */

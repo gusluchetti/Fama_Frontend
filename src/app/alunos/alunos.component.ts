@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlunoModel } from '../models'
 
 @Component({
   selector: 'app-alunos',
@@ -11,18 +12,6 @@ export class AlunosComponent {
     
   }
   
-  
-  alunos = [
-    {
-      idAluno: 1,
-      idCurso: 'Judo',
-      nomeAluno: 'Peter Parker'
-    },
-    {
-      idAluno: 2,
-      idCurso: 'Academia',
-      nomeAluno: 'Mister Mister'
-    },
-  ];
+alunos: AlunoModel[] = [];
 
 }

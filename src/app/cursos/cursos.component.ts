@@ -17,13 +17,10 @@ export class CursosComponent{
   ngOnInit()
 	{
 		this.subscriber = this.route.params.subscribe(params => {
-	       
         this.http.get('/api/curso/listar').subscribe((data:any) => {
-
-        this.listaCursos = (data)
-        console.log(this.listaCursos)
+          this.listaCursos = (data)
 		    });
-	    });
+    });
 	}
 
   constructor(

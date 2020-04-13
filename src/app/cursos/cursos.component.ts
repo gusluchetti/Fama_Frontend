@@ -30,5 +30,4 @@ export class CursosComponent{
     private http: HttpClient, 
     private route: ActivatedRoute) { }
 
-    
 }

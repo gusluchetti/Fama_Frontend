@@ -9,14 +9,32 @@
             </div>
         </div>  
         <div class="row">
-            <div class="col-sm-7">
+            <div class="col-sm-2">
+                <label>ID: </label>
+            </div>
+            <div class="col-sm-4">
                 <label>Nome: </label>
             </div>
+            <div class="col-sm-3">
+                <label>Responsável do Curso: </label>
+            </div>
+            <div class="col-sm-3">
+                <label>Horas Semanais: </label>
+            </div>
         </div>
-        <div *ngFor="let curso of cursos">
+        <div *ngFor="let curso of listaCursos">
             <div class="row">
-                <div class="col-sm-7">
+                <div class="col-sm-2">
                     <div class="input-display"><p class="padding-h">{{curso.nomeCurso}}</p></div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="input-display"><p class="padding-h">{{curso.idCurso}}</p></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-display"><p class="padding-h">{{curso.responsavelCurso}}</p></div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-display"><p class="padding-h">{{curso.horasSemanaisCurso}}</p></div>
                 </div>
             </div>
         </div>

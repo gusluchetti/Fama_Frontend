@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CursoModel } from '../models';
+import { HttpClient } from "@angular/common/http";
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-cursos',
@@ -7,15 +11,24 @@ import { Component } from '@angular/core';
 })
 export class CursosComponent{
 
-  constructor() { }
+  private subscriber: any;
+  listaCursos: CursoModel[] = [];
 
-  cursos = [
-    {
-      nomeCurso: 'Karate'
-    },
-    {
-      nomeCurso: 'Arco e Flecha'
-    },
-  ];
+  ngOnInit()
+	{
+		this.subscriber = this.route.params.subscribe(params => {
+	       
+        this.http.get('/api/curso/listar').subscribe((data:any) => {
 
+        this.listaCursos = (data)
+        console.log(this.listaCursos)
+		    });
+	    });
+	}
+
+  constructor(
+    private http: HttpClient, 
+    private route: ActivatedRoute) { }
+
+    
 }

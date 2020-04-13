@@ -1,14 +1,14 @@
-<div class="wrapper flex">
+<div class="wrapper flex flex-center-h">
     <div class="content">
         <div class="align-center margin-bot">
             <h3>Lista de Cursos</h3>
         </div>
-        <div class="row margin-bot">
+        <div *ngIf="!editing" class="row margin-bot">
             <div class="col-12">
-                <button type="button" class="btn btn-primary push-right">CADASTRAR CURSO</button>
+                <button type="button" class="btn btn-primary push-right" (click)="onCreate()">CADASTRAR CURSO</button>
             </div>
         </div>  
-        <div class="row">
+        <div *ngIf="!editing" class="row">
             <div class="col-sm-2">
                 <label>ID: </label>
             </div>
@@ -22,24 +22,38 @@
                 <label>Horas Semanais: </label>
             </div>
         </div>
-        <div *ngFor="let curso of listaCursos">
-            <div class="row">
-                <div class="col-sm-2">
-                    <div class="input-display"><p class="padding-h">{{curso.idCurso}}</p></div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="input-display"><p class="padding-h">{{curso.nomeCurso}}</p></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="input-display"><p class="padding-h">{{curso.responsavelCurso}}</p></div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="input-display"><p class="padding-h">{{curso.horasSemanaisCurso}}</p></div>
-                </div>
-                <div class="col-sm-1">
-                    <button type="button" class="btn btn-danger remove" (click)="onRemove(curso.idCurso)">X</button>
+        <div *ngIf="!editing" >
+            <div *ngFor="let curso of listaCursos">
+                <div class="flex row">
+                    <div class="col-sm-2">
+                        <div class="input-display"><p class="padding-h">{{curso.idCurso}}</p></div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-display"><p class="padding-h">{{curso.nomeCurso}}</p></div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="input-display"><p class="padding-h">{{curso.responsavelCurso}}</p></div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="input-display"><p class="padding-h">{{curso.horasSemanaisCurso}}</p></div>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-warning" (click)="onEdit()"><i class="fa fa-wrench"></i></button>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-danger" (click)="onRemove(curso)"><i class="fa fa-times"></i></button>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div *ngIf="editing">
+            <form>
+                <div class="form-group">
+                    <label for=""></label>
+                    <input type="text" class="form-control" placeholder="">
+                </div>
+            </form>
+            <button type="button" class="btn btn-success" (click)="onFinish()"><i class="fa fa-check"></i></button>
         </div>
     </div>
 </div>

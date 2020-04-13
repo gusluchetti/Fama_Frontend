@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlunoModel } from '../models'
+import { AlunoModel } from '../models/models'
 
 @Component({
   selector: 'app-alunos',

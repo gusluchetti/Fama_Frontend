@@ -5,7 +5,6 @@
 /*  pastel orange -> #FA7D61 */
 /*  not quite white -> #FAFAFA */
 
-
 .align-center {
     text-align: center;
 }
@@ -24,7 +23,6 @@
 
 .flex {
     display: flex;
-    justify-content: center;
 }
 
 .padding-v {
@@ -35,6 +33,14 @@
 .padding-h {
     padding-right: 10px;
     padding-left: 10px;
+}
+
+.flex-center-v {
+    align-items: center;
+}
+
+.flex-center-h {
+    justify-content: center;
 }
 
 .wrapper {
@@ -75,10 +81,8 @@
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
 }
 
-.service {
-    color: #1492FA;
-}
-
-.remove:hover {
-    background-color: #4D1118;
+button:hover {
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
 }

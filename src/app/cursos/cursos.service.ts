@@ -1,7 +1,7 @@
 import { Injectable, NgModule } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ActivatedRoute } from '@angular/router';
-import { CursoModel } from '../models';
+import { CursoModel } from '../models/models';
 
 @NgModule()
 export class CursoService {
@@ -22,7 +22,7 @@ export class CursoService {
     ) { }
 
     excluirCurso(idCurso: number) {
-        return this.http.delete('api/curso/excluir/'+ idCurso, this.httpOptions);
+        return this.http.get('/api/curso/excluir/?idCurso='+ idCurso, this.httpOptions);
     }
 
     listar() {

@@ -10,7 +10,6 @@ export interface AlunoModel {
     nomeAluno: string;
     idCurso: number;
     idEndereco: number;
-    numeroSisAluno: number;
 }
 
 export interface CursoModel {
@@ -36,5 +35,4 @@ export interface FuncionarioModel {
     salarioFuncionario: string; 
     formacaoFuncionario: string; 
     idEndereco: number; 
-    numeroSisFuncionario: number;
 }

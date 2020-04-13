@@ -24,8 +24,7 @@ export class CursosComponent{
 
     }
 
-
   onRemove(idCurso: number) {
-    
+    this.service.excluirCurso(idCurso).subscribe();
   }
 }

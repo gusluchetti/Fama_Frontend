@@ -78,3 +78,7 @@
 .service {
     color: #1492FA;
 }
+
+.remove:hover {
+    background-color: #4D1118;
+}

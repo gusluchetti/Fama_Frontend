@@ -8,6 +8,8 @@ import { AlunosComponent } from './alunos/alunos.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
+import { CursoService } from './cursos/cursos.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CursoService
   ],
   providers: [],
   bootstrap: [AppComponent]

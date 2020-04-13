@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CursoModel } from '../models';
 import { HttpClient } from "@angular/common/http";
-import { ActivatedRoute } from '@angular/router';
+import { CursoService } from './cursos.service';
 
 
 @Component({
@@ -11,20 +11,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CursosComponent{
 
-  private subscriber: any;
-  listaCursos: CursoModel[] = [];
+  listaCursos: any = [];
 
-  ngOnInit()
-	{
-		this.subscriber = this.route.params.subscribe(params => {
-        this.http.get('/api/curso/listar').subscribe((data:any) => {
-          this.listaCursos = (data)
-		    });
+  ngOnInit() { 
+    this.service.listar().subscribe((data: any) => {
+      this.listaCursos = data;
     });
-	}
+  }
 
   constructor(
-    private http: HttpClient, 
-    private route: ActivatedRoute) { }
+    private service: CursoService) { 
 
+    }
+
+
+  onRemove(idCurso: number) {
+    
+  }
 }

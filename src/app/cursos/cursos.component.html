@@ -33,8 +33,11 @@
                 <div class="col-sm-3">
                     <div class="input-display"><p class="padding-h">{{curso.responsavelCurso}}</p></div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <div class="input-display"><p class="padding-h">{{curso.horasSemanaisCurso}}</p></div>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-danger remove" (click)="onRemove(curso.idCurso)">X</button>
                 </div>
             </div>
         </div>

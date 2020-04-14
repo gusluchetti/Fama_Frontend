@@ -1,44 +1,46 @@
 <div class="wrapper flex flex-center-h">
     <div class="content">
         <div class="align-center margin-bot">
-            <h3>Lista de Cursos</h3>
+            <h3 *ngIf="!editing">Lista de Cursos</h3>
+            <h3 *ngIf="editing && !this.selectedCurso.idCurso">Novo Curso</h3>
+            <h3 *ngIf="editing && this.selectedCurso.idCurso">Editando Curso {{this.selectedCurso.nomeCurso}}</h3>
         </div>
         <div *ngIf="!editing" class="row margin-bot">
             <div class="col-12">
-                <button type="button" class="btn btn-primary push-right" (click)="onCreate()">CADASTRAR CURSO</button>
+                <button type="button" class="btn btn-primary push-right" (click)="onEdit()">CADASTRAR CURSO</button>
             </div>
         </div>  
         <div *ngIf="!editing" class="row">
             <div class="col-sm-2">
                 <label>ID: </label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <label>Nome: </label>
             </div>
             <div class="col-sm-3">
                 <label>Responsável do Curso: </label>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 <label>Horas Semanais: </label>
             </div>
         </div>
         <div *ngIf="!editing" >
-            <div *ngFor="let curso of listaCursos">
+            <div *ngFor="let curso of listCursos">
                 <div class="flex row">
                     <div class="col-sm-2">
                         <div class="input-display"><p class="padding-h">{{curso.idCurso}}</p></div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="input-display"><p class="padding-h">{{curso.nomeCurso}}</p></div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="input-display"><p class="padding-h">{{curso.responsavelCurso}}</p></div>
                     </div>
                     <div class="col-sm-2">
                         <div class="input-display"><p class="padding-h">{{curso.horasSemanaisCurso}}</p></div>
                     </div>
                     <div class="col-sm-1">
-                        <button type="button" class="btn btn-warning" (click)="onEdit()"><i class="fa fa-wrench"></i></button>
+                        <button type="button" class="btn btn-warning" (click)="onEdit(curso)"><i class="fa fa-wrench"></i></button>
                     </div>
                     <div class="col-sm-1">
                         <button type="button" class="btn btn-danger" (click)="onRemove(curso)"><i class="fa fa-times"></i></button>
@@ -49,11 +51,28 @@
         <div *ngIf="editing">
             <form>
                 <div class="form-group">
-                    <label for=""></label>
-                    <input type="text" class="form-control" placeholder="">
+                    <label for="">Nome: </label>
+                    <input [(ngModel)]="this.selectedCurso.nomeCurso" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Responsável: </label>
+                    <input [(ngModel)]="this.selectedCurso.responsavelCurso" type="text" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Horas Semanais: </label>
+                    <input [(ngModel)]="this.selectedCurso.horasSemanaisCurso" type="number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Duração: </label>
+                    <input [(ngModel)]="this.selectedCurso.duracaoCurso" type="number" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="">Descrição: </label>
+                    <textarea [(ngModel)]="this.selectedCurso.descricaoCurso" type="text" class="form-control"></textarea>
                 </div>
             </form>
-            <button type="button" class="btn btn-success" (click)="onFinish()"><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-success margin-r-l push-right" (click)="onFinish()"> CONFIRMAR <i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-danger margin-r-l push-right" (click)="onCancel()"> CANCELAR <i class="fa fa-times"></i></button>
         </div>
     </div>
 </div>

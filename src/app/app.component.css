@@ -25,6 +25,11 @@
     display: flex;
 }
 
+.margin-r-l {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
 .padding-v {
     padding-top: 10px;
     padding-bottom: 10px;

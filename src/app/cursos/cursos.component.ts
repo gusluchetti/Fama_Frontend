@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CursoModel } from '../models/models';
 import { CursoService } from './cursos.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-cursos',
@@ -10,12 +11,13 @@ import { CursoService } from './cursos.service';
 export class CursosComponent{
 
   editing: boolean = false;
-  curso = {} as CursoModel
-  listaCursos: CursoModel[] = [];
+  cursoExists: boolean = false;
+  selectedCurso = {} as CursoModel
+  listCursos: CursoModel[] = [];
 
   ngOnInit() { 
     this.service.listar().subscribe((data: any) => {
-      this.listaCursos = data;
+      this.listCursos = data;
     });
   }
 
@@ -26,26 +28,43 @@ export class CursosComponent{
 
   changeMode() { this.editing = !this.editing }
 
-  onEdit() {
+  onEdit(c?: CursoModel) {
+    if(c != null || c!= undefined) {
+      this.selectedCurso = c
+      this.cursoExists = true
+    }
+    console.log('edit start', this.selectedCurso)
     this.changeMode()
   }
 
-  onCreate() {
-    this.curso.idCurso
-    this.changeMode()
-  }
-
-  onRemove(Curso: CursoModel) {
-    let id = Curso.idCurso;
+  onRemove(c: CursoModel) {
+    let id = c.idCurso;
     this.service.excluirCurso(id).subscribe();
-    let index = this.listaCursos.indexOf(Curso)
+    let index = this.listCursos.indexOf(c)
 
-    if(index) {
-      this.listaCursos.splice(index, 1)
+    if(index != null || index != undefined) {
+      this.listCursos.splice(index, 1)
     }
   }
 
+  onCancel() {
+    this.selectedCurso = null
+    this.changeMode()
+  }
+
   onFinish() {
+    console.log(this.selectedCurso)
+    // curso vai ser alterado
+    if(this.cursoExists) {
+      // this.service.alterar(this.selectedCurso.idCurso).subscribe((data: any) => {
+      // });
+    }
+    // curso sera criado
+    else {
+      // this.service.criar(this.selectedCurso).subscribe((data: any) => {
+      // });
+    }
+    
     this.changeMode()
   }
 }

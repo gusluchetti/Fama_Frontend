@@ -12,6 +12,6 @@ export class AlunosComponent {
     
   }
   
-alunos: AlunoModel[] = [];
+  alunos = [] as AlunoModel[];
 
 }

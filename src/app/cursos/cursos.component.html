@@ -3,21 +3,18 @@
         <div class="align-center margin-bot">
             <h3 *ngIf="!editing">Lista de Cursos</h3>
             <h3 *ngIf="editing && !this.selectedCurso.idCurso">Novo Curso</h3>
-            <h3 *ngIf="editing && this.selectedCurso.idCurso">Editando Curso {{this.selectedCurso.nomeCurso}}</h3>
+            <h3 *ngIf="editing && this.selectedCurso.idCurso">Editando <strong>{{this.selectedCurso.nomeCurso}}</strong></h3>
         </div>
         <div *ngIf="!editing" class="row margin-bot">
             <div class="col-12">
-                <button type="button" class="btn btn-primary push-right" (click)="onEdit()">CADASTRAR CURSO</button>
+                <button type="button" class="btn btn-primary push-right" (click)="onEdit(emptyCurso)">CADASTRAR CURSO</button>
             </div>
         </div>  
         <div *ngIf="!editing" class="row">
-            <div class="col-sm-2">
-                <label>ID: </label>
-            </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <label>Nome: </label>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <label>Responsável do Curso: </label>
             </div>
             <div class="col-sm-2">
@@ -27,48 +24,46 @@
         <div *ngIf="!editing" >
             <div *ngFor="let curso of listCursos">
                 <div class="flex row">
-                    <div class="col-sm-2">
-                        <div class="input-display"><p class="padding-h">{{curso.idCurso}}</p></div>
-                    </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="input-display"><p class="padding-h">{{curso.nomeCurso}}</p></div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <div class="input-display"><p class="padding-h">{{curso.responsavelCurso}}</p></div>
                     </div>
                     <div class="col-sm-2">
                         <div class="input-display"><p class="padding-h">{{curso.horasSemanaisCurso}}</p></div>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="margin-r-l">
                         <button type="button" class="btn btn-warning" (click)="onEdit(curso)"><i class="fa fa-wrench"></i></button>
                     </div>
-                    <div class="col-sm-1">
+                    <div class="margin-r-l">
                         <button type="button" class="btn btn-danger" (click)="onRemove(curso)"><i class="fa fa-times"></i></button>
                     </div>
                 </div>
             </div>
         </div>
+
         <div *ngIf="editing">
             <form>
                 <div class="form-group">
-                    <label for="">Nome: </label>
-                    <input [(ngModel)]="this.selectedCurso.nomeCurso" type="text" class="form-control">
+                    <label for="nomeCurso">Nome: </label>
+                    <input type="text" name="nomeCurso" id="nomeCurso" class="form-control" [(ngModel)]="selectedCurso.nomeCurso">
                 </div>
                 <div class="form-group">
-                    <label for="">Responsável: </label>
-                    <input [(ngModel)]="this.selectedCurso.responsavelCurso" type="text" class="form-control">
+                    <label for="responsavelCurso">Responsável: </label>
+                    <input type="text" name="responsavelCurso" id="responsavelCurso" class="form-control" [(ngModel)]="selectedCurso.responsavelCurso">
                 </div>
                 <div class="form-group">
-                    <label for="">Horas Semanais: </label>
-                    <input [(ngModel)]="this.selectedCurso.horasSemanaisCurso" type="number" class="form-control">
+                    <label for="horasSemanaisCurso">Horas Semanais: </label>
+                    <input type="number" name="horasSemanaisCurso" id="horasSemanaisCurso" class="form-control" [(ngModel)]="selectedCurso.horasSemanaisCurso">
                 </div>
                 <div class="form-group">
-                    <label for="">Duração: </label>
-                    <input [(ngModel)]="this.selectedCurso.duracaoCurso" type="number" class="form-control">
+                    <label for="duracaoCurso">Duração: </label>
+                    <input type="number" name="duracaoCurso" id="duracaoCurso" class="form-control" [(ngModel)]="selectedCurso.duracaoCurso">
                 </div>
                 <div class="form-group">
-                    <label for="">Descrição: </label>
-                    <textarea [(ngModel)]="this.selectedCurso.descricaoCurso" type="text" class="form-control"></textarea>
+                    <label for="descricaoCurso">Descrição: </label>
+                    <textarea type="text" name="descricaoCurso" id="descricaoCurso" class="form-control" [(ngModel)]="selectedCurso.descricaoCurso"></textarea>
                 </div>
             </form>
             <button type="button" class="btn btn-success margin-r-l push-right" (click)="onFinish()"> CONFIRMAR <i class="fa fa-check"></i></button>

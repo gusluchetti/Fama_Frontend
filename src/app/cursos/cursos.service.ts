@@ -21,13 +21,20 @@ export class CursoService {
         private route: ActivatedRoute
     ) { }
 
-    excluirCurso(idCurso: number) {
-        return this.http.get('/api/curso/excluir/?idCurso='+ idCurso, this.httpOptions);
+    criar(curso: CursoModel) {
+        return this.http.post('/api/curso/criar', JSON.stringify(curso), this.httpOptions);
     }
 
     listar() {
         return this.http.get('/api/curso/listar');
     }
-    
 
+    alterar(curso: CursoModel) {
+        return this.http.post('/api/curso/alterar', JSON.stringify(curso), this.httpOptions);
+    }
+
+    excluir(idCurso: number) {
+        return this.http.get('/api/curso/excluir/?idCurso='+ idCurso, this.httpOptions);
+    }
+    
 }

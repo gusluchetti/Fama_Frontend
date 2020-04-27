@@ -9,11 +9,12 @@ import { isNullOrUndefined } from 'util';
   styleUrls: ['../app.component.css']
 })
 export class CursosComponent{
+  selectedCurso: CursoModel = null
+  emptyCurso = {} as CursoModel
+  listCursos = [] as CursoModel[]
 
-  editing: boolean = false;
-  cursoExists: boolean = false;
-  selectedCurso = {} as CursoModel
-  listCursos: CursoModel[] = [];
+  editing: boolean = false
+  cursoExists: boolean = false
 
   ngOnInit() { 
     this.service.listar().subscribe((data: any) => {
@@ -26,20 +27,19 @@ export class CursosComponent{
 
     }
 
-  changeMode() { this.editing = !this.editing }
+  changeMode() { this.editing = !this.editing; }
 
-  onEdit(c?: CursoModel) {
-    if(c != null || c!= undefined) {
-      this.selectedCurso = c
-      this.cursoExists = true
-    }
-    console.log('edit start', this.selectedCurso)
+  onEdit(c: CursoModel) {
+    if(c.idCurso != null || c.idCurso != undefined) { this.cursoExists = true }
+    else { this.cursoExists = false }
+
+    this.selectedCurso = c
     this.changeMode()
+    console.log("curso a ser modificado/adicionado", this.selectedCurso)
   }
 
   onRemove(c: CursoModel) {
-    let id = c.idCurso;
-    this.service.excluirCurso(id).subscribe();
+    this.service.excluir(c.idCurso).subscribe();
     let index = this.listCursos.indexOf(c)
 
     if(index != null || index != undefined) {
@@ -48,23 +48,34 @@ export class CursosComponent{
   }
 
   onCancel() {
-    this.selectedCurso = null
+    this.selectedCurso = {} as CursoModel
     this.changeMode()
   }
 
+  //!!!!!TODO: ONLY CHANGE LISTS IF SUCESS
   onFinish() {
-    console.log(this.selectedCurso)
-    // curso vai ser alterado
-    if(this.cursoExists) {
-      // this.service.alterar(this.selectedCurso.idCurso).subscribe((data: any) => {
-      // });
+    console.log("curso a ser enviado", this.selectedCurso)
+    // alterar curso existente, else adicionar novo curso
+     if(this.cursoExists) {
+      console.log("UPDATE")   
+      this.service.alterar(this.selectedCurso).subscribe((data: any) => {});
+      let success = true;
+
+      if (success) {
+        console.log("Curso alterado com sucesso!")
+      }
     }
-    // curso sera criado
-    else {
-      // this.service.criar(this.selectedCurso).subscribe((data: any) => {
-      // });
+     else {
+      console.log("CREATE")   
+      this.service.criar(this.selectedCurso).subscribe((data: any) => {});
+      let success = true;
+
+      if (success) {
+        this.listCursos.push(this.selectedCurso)
+        console.log("Curso criado com sucesso!")
+
+      }
     }
-    
     this.changeMode()
   }
 }

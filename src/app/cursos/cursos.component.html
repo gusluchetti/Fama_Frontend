@@ -14,10 +14,10 @@
             <div class="col-sm-4">
                 <label>Nome: </label>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <label>Responsável do Curso: </label>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <label>Horas Semanais: </label>
             </div>
         </div>
@@ -27,16 +27,16 @@
                     <div class="col-sm-4">
                         <div class="input-display"><p class="padding-h">{{curso.nomeCurso}}</p></div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                         <div class="input-display"><p class="padding-h">{{curso.responsavelCurso}}</p></div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <div class="input-display"><p class="padding-h">{{curso.horasSemanaisCurso}}</p></div>
                     </div>
-                    <div class="margin-r-l">
+                    <div class="col-sm-1">
                         <button type="button" class="btn btn-warning" (click)="onEdit(curso)"><i class="fa fa-wrench"></i></button>
                     </div>
-                    <div class="margin-r-l">
+                    <div class="col-sm-1">
                         <button type="button" class="btn btn-danger" (click)="onRemove(curso)"><i class="fa fa-times"></i></button>
                     </div>
                 </div>

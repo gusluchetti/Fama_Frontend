@@ -10,6 +10,7 @@ import { CursosComponent } from './cursos/cursos.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 import { CursoService } from './cursos/cursos.service';
+import { AlunoService } from './alunos/alunos.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CursoService } from './cursos/cursos.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    CursoService
+    CursoService,
+    AlunoService
   ],
   providers: [],
   bootstrap: [AppComponent]

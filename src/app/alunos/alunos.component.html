@@ -4,11 +4,11 @@
             <h3>Lista de Alunos</h3>
         </div>
         <thead class="table">
-            <th class="col-sm-7">Nome</th>
-            <th class="col-sm-2">Aulas</th>
-            <th class="col-sm-2">Matrícula</th>
+            <th>Nome</th>
+            <th>Aulas</th>
+            <th>Matrícula</th>
         </thead>
-        <div *ngFor="let aluno of alunos">
+        <tbody *ngFor="let aluno of alunos">
             <div class="row">
                 <div class="col-sm-7">
                     <div class="input-display"><p class="padding-h">{{aluno.nomeAluno}}</p></div>
@@ -20,7 +20,7 @@
                     <div class="input-display"><p class="padding-h">{{aluno.idAluno}}</p></div>
                 </div>
             </div>
-        </div>
+        </tbody>
     </div>
 </div>
 <button type="button" class="button" alt="Cadastrar Aluno">

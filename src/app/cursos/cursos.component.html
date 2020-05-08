@@ -5,12 +5,7 @@
             <h3 *ngIf="editing && !this.selectedCurso.idCurso">Novo Curso</h3>
             <h3 *ngIf="editing && this.selectedCurso.idCurso">Editando Curso {{this.selectedCurso.nomeCurso}}</h3>
         </div>
-        <div *ngIf="!editing" class="row margin-bot">
-            <div class="col-12">
-                <button type="button" class="btn btn-primary push-right" (click)="onEdit()">CADASTRAR CURSO</button>
-            </div>
-        </div>  
-        <div *ngIf="!editing" class="row">
+        <!-- <div *ngIf="!editing" class="row">
             <div class="col-sm-2">
                 <label>ID: </label>
             </div>
@@ -23,7 +18,13 @@
             <div class="col-sm-2">
                 <label>Horas Semanais: </label>
             </div>
-        </div>
+        </div> -->
+        <thead class="table">
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Professor</th>
+            <th>Horas Semanais</th>
+        </thead>
         <div *ngIf="!editing" >
             <div *ngFor="let curso of listCursos">
                 <div class="flex row">
@@ -76,3 +77,7 @@
         </div>
     </div>
 </div>
+
+<button type="button" class="button" alt="Cadastrar Aluno">
+    <i class="fas fa-user-plus"></i>
+</button>

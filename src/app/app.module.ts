@@ -10,13 +10,15 @@ import { CursosComponent } from './cursos/cursos.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 import { CursoService } from './cursos/cursos.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlunosComponent,
     CursosComponent,
-    FuncionariosComponent
+    FuncionariosComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

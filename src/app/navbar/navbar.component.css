@@ -1,0 +1,60 @@
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+.navbar{
+    background-color: whitesmoke;
+    padding: 0;
+    height: 60px;
+}
+
+.logo{
+    float: left;
+}
+
+nav{
+    float: right;
+    height: 60px;
+}
+
+nav ul{
+    margin-block-start:0;
+    margin-block-end: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li{
+    display: inline-block;
+    margin-left: 70px;
+    padding-top: 15px;
+    position: relative;
+}
+
+nav a {
+    color: #F9542E;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color:#F9542E;
+}
+/* animando hover*/
+nav a::before{
+    content: '';
+    display: block;
+    height: 6px;
+    width: 100%;
+    background-color: #F9542E;
+    position: absolute;
+    top: 0;
+    width: 0%;
+    transition: all ease-in-out 300ms;
+}
+nav a:hover::before{
+    width: 100%;
+}

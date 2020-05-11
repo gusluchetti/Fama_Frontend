@@ -1,10 +1,10 @@
 import { Injectable, NgModule } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ActivatedRoute } from '@angular/router';
-import { CursoModel } from '../models/models';
+import { AlunoModel } from '../models/models';
 
 @NgModule()
-export class CursoService {
+export class AlunoService {  
 
     private subscriber: any;
     lista: any;
@@ -21,20 +21,20 @@ export class CursoService {
         private route: ActivatedRoute
     ) { }
 
-    criar(curso: CursoModel) {
-        return this.http.post('/api/curso/criar', JSON.stringify(curso), this.httpOptions);
+    criar(aluno: AlunoModel) {
+        return this.http.post('/api/aluno/criar', JSON.stringify(aluno), this.httpOptions);
     }
 
     listar() {
-        return this.http.get('/api/curso/listar');
+        return this.http.get('/api/aluno/listar');
     }
 
-    alterar(curso: CursoModel) {
-        return this.http.post('/api/curso/alterar', JSON.stringify(curso), this.httpOptions);
+    alterar(aluno: AlunoModel) {
+        return this.http.post('/api/aluno/alterar', JSON.stringify(aluno), this.httpOptions);
     }
 
-    excluir(idCurso: number) {
-        return this.http.get('/api/curso/excluir/?idCurso='+ idCurso, this.httpOptions);
+    excluir(idAluno: number) {
+        return this.http.get('/api/aluno/excluir/?idAluno='+ idAluno, this.httpOptions);
     }
     
 }

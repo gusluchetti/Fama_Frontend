@@ -33,8 +33,7 @@ export class CursosComponent{
       this.selectedCurso = c
       this.cursoExists = true
     }
-    console.log('edit start', this.selectedCurso)
-    this.changeMode()
+    this.onCancel()
   }
 
   onRemove(c: CursoModel) {

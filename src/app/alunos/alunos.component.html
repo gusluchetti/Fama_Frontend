@@ -4,22 +4,20 @@
             <h3>Lista de Alunos</h3>
         </div>
         <thead class="table">
-            <th>Nome</th>
-            <th>Aulas</th>
-            <th>Matrícula</th>
+            <th style="width: 650px">Nome</th>
+            <th style="width: 230px">Aulas</th>
+            <th style="width: 230px">Matrícula</th>
         </thead>
         <tbody *ngFor="let aluno of alunos">
-            <div class="row">
-                <div class="col-sm-7">
-                    <div class="input-display"><p class="padding-h">{{aluno.nomeAluno}}</p></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="input-display"><p class="padding-h">{{aluno.idCurso}}</p></div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="input-display"><p class="padding-h">{{aluno.idAluno}}</p></div>
-                </div>
-            </div>
+            <td>
+                <p class="padding-h">{{aluno.nomeAluno}}</p>
+            </td>
+            <td>
+                <p class="padding-h">{{aluno.idCurso}}</p>
+            </td>
+            <td>
+                <p class="padding-h">{{aluno.idAluno}}</p>
+            </td>
         </tbody>
     </div>
 </div>
@@ -29,6 +27,6 @@
 
 <ng-template #cadastro>
     <div>
-        
+
     </div>
 </ng-template>

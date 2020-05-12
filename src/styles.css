@@ -11,16 +11,37 @@ body {
     transition: all 0.3s ease;
 }
 
+h3{
+  color: whitesmoke;
+  font-weight: bold;
+  cursor: default;
+}
+
+thead{
+  text-align: center;
+  background-color: #fff;
+}
+
+tbody{
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+}
+
+th{
+  color: #F9542E;
+}
+
+th, td {
+  border-bottom: 1px solid #ddd;
+  cursor: default;
+}
+
 .table{
   width: 100%;
   margin-bottom: 1rem;
   color: #fff;
   cursor: default;
-}
-
-h3{
-  color: whitesmoke;
-  font-weight: bold;
 }
 
 .button{

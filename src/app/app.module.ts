@@ -10,11 +10,8 @@ import { CursosComponent } from './cursos/cursos.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 import { CursoService } from './cursos/cursos.service';
-<<<<<<< HEAD
 import { NavbarComponent } from './navbar/navbar.component';
-=======
 import { AlunoService } from './alunos/alunos.service';
->>>>>>> develop
 
 @NgModule({
   declarations: [

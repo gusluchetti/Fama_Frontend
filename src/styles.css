@@ -7,7 +7,7 @@ body {
     height: 100%;
     width: 100%;
     margin: 0;
-    background-color: #F9542E;
+    background: url('assets/background.jpg') no-repeat center center fixed;
     transition: all 0.3s ease;
 }
 

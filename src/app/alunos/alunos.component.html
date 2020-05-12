@@ -5,13 +5,12 @@
             <h3 *ngIf="editing && !this.selectedAluno.idAluno">Novo Aluno</h3>
             <h3 *ngIf="editing && this.selectedAluno.idAluno">Editando <strong>{{this.selectedAluno.nomeAluno}}</strong></h3>
         </div>
-<<<<<<< HEAD
         <thead class="table">
             <th>Nome</th>
             <th>Aulas</th>
             <th>Matrícula</th>
         </thead>
-        <tbody *ngFor="let aluno of alunos">
+        <tbody *ngFor="let aluno of listAlunos">
             <div class="row">
                 <div class="col-sm-7">
                     <div class="input-display"><p class="padding-h">{{aluno.nomeAluno}}</p></div>
@@ -25,76 +24,36 @@
             </div>
         </tbody>
     </div>
-</div>
-<button type="button" class="button" alt="Cadastrar Aluno">
-    <i class="fas fa-user-plus"></i>
-</button>
-=======
-        <div *ngIf="!editing" class="row margin-bot">
-            <div class="col-12">
-                <button type="button" class="btn btn-primary push-right" (click)="onEdit(emptyAluno)">CADASTRAR CURSO</button>
-            </div>
-        </div>  
-        <div *ngIf="!editing" class="row">
-            <div class="col-sm-4">
-                <label>Nome: </label>
-            </div>
-            <div class="col-sm-3">
-                <label>Responsável do Aluno: </label>
-            </div>
-            <div class="col-sm-3">
-                <label>Horas Semanais: </label>
-            </div>
-        </div>
-        <!-- TODO: adequar colunas para informacoes dos alunos
-        <div *ngIf="!editing" >
-            <div *ngFor="let aluno of listAlunos">
-                <div class="flex row">
-                    <div class="col-sm-4">
-                        <div class="input-display"><p class="padding-h">{{aluno.nomeAluno}}</p></div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="input-display"><p class="padding-h">{{aluno.responsavelAluno}}</p></div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="input-display"><p class="padding-h">{{aluno.horasSemanaisAluno}}</p></div>
-                    </div>
-                    <div class="col-sm-1">
-                        <button type="button" class="btn btn-warning" (click)="onEdit(aluno)"><i class="fa fa-wrench"></i></button>
-                    </div>
-                    <div class="col-sm-1">
-                        <button type="button" class="btn btn-danger" (click)="onRemove(aluno)"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
->>>>>>> develop
+<!-- </div> -->
 
-        <div *ngIf="editing">
-            <form>
-                <div class="form-group">
-                    <label for="nomeAluno">Nome: </label>
-                    <input type="text" name="nomeAluno" id="nomeAluno" class="form-control" [(ngModel)]="selectedAluno.nomeAluno">
-                </div>
-                <div class="form-group">
-                    <label for="responsavelAluno">Responsável: </label>
-                    <input type="text" name="responsavelAluno" id="responsavelAluno" class="form-control" [(ngModel)]="selectedAluno.responsavelAluno">
-                </div>
-                <div class="form-group">
-                    <label for="horasSemanaisAluno">Horas Semanais: </label>
-                    <input type="number" name="horasSemanaisAluno" id="horasSemanaisAluno" class="form-control" [(ngModel)]="selectedAluno.horasSemanaisAluno">
-                </div>
-                <div class="form-group">
-                    <label for="duracaoAluno">Duração: </label>
-                    <input type="number" name="duracaoAluno" id="duracaoAluno" class="form-control" [(ngModel)]="selectedAluno.duracaoAluno">
-                </div>
-                <div class="form-group">
-                    <label for="descricaoAluno">Descrição: </label>
-                    <textarea type="text" name="descricaoAluno" id="descricaoAluno" class="form-control" [(ngModel)]="selectedAluno.descricaoAluno"></textarea>
-                </div>
-            </form>
-            <button type="button" class="btn btn-success margin-r-l push-right" (click)="onFinish()"> CONFIRMAR <i class="fa fa-check"></i></button>
-            <button type="button" class="btn btn-danger margin-r-l push-right" (click)="onCancel()"> CANCELAR <i class="fa fa-times"></i></button>
-        </div>  -->
+    <button type="button" class="button" alt="Cadastrar Aluno">
+        <i class="fas fa-user-plus"></i>
+    </button>
+
+    <div *ngIf="editing">
+        <form>
+            <div class="form-group">
+                <label for="nomeAluno">Nome: </label>
+                <input type="text" name="nomeAluno" id="nomeAluno" class="form-control" [(ngModel)]="selectedAluno.nomeAluno">
+            </div>
+            <div class="form-group">
+                <label for="emailAluno">Email: </label>
+                <input type="text" name="emailAluno" id="emailAluno" class="form-control" [(ngModel)]="selectedAluno.emailAluno">
+            </div>
+            <!-- <div class="form-group">
+                <label for="horasSemanaisAluno">Horas Semanais: </label>
+                <input type="number" name="horasSemanaisAluno" id="horasSemanaisAluno" class="form-control" [(ngModel)]="selectedAluno.horasSemanaisAluno">
+            </div>
+            <div class="form-group">
+                <label for="duracaoAluno">Duração: </label>
+                <input type="number" name="duracaoAluno" id="duracaoAluno" class="form-control" [(ngModel)]="selectedAluno.duracaoAluno">
+            </div>
+            <div class="form-group">
+                <label for="descricaoAluno">Descrição: </label>
+                <textarea type="text" name="descricaoAluno" id="descricaoAluno" class="form-control" [(ngModel)]="selectedAluno.descricaoAluno"></textarea>
+            </div> -->
+        </form>
+        <button type="button" class="btn btn-success margin-r-l push-right" (click)="onFinish()"> CONFIRMAR <i class="fa fa-check"></i></button>
+        <button type="button" class="btn btn-danger margin-r-l push-right" (click)="onCancel()"> CANCELAR <i class="fa fa-times"></i></button>
     </div>
 </div>

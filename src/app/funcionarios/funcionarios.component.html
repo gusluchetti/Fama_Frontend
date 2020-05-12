@@ -4,23 +4,21 @@
             <h3>Lista de Professores</h3>
         </div>
         <thead class="table">
-            <th>Nome</th>
-            <th>Aulas</th>
-            <th>Matrícula</th>
+            <th style="width: 650px">Nome</th>
+            <th style="width: 250px">Aulas</th>
+            <th style="width: 230px">Matrícula</th>
         </thead>
-        <div *ngFor="let funcionario of funcionarios">
-            <div class="row">
-                <div class="col-sm-7">
-                    <div class="input-display"><p class="padding-h">{{funcionario.nomeFuncionario}}</p></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="input-display"><p class="padding-h">{{funcionario.idCurso}}</p></div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="input-display"><p class="padding-h">{{funcionario.idFuncionario}}</p></div>
-                </div>
-            </div>
-        </div>
+        <tbody *ngFor="let funcionario of funcionarios">
+            <td>
+                <a>{{funcionario.nomeFuncionario}}</a>
+            </td>
+            <td>
+                <a>{{funcionario.idCurso}}</a>
+            </td>
+            <td>
+                <a>{{funcionario.idFuncionario}}</a>
+            </td>
+        </tbody>
     </div>
 </div>
 

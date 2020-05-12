@@ -13,16 +13,16 @@
         </thead>
         <tbody *ngFor="let curso of listCursos">
             <td>
-                <p class="padding-h">{{curso.idCurso}}</p>
+                <a>{{curso.idCurso}}</a>
             </td>
             <td>
-                <p class="padding-h">{{curso.nomeCurso}}</p>
+                <a>{{curso.nomeCurso}}</a>
             </td>
             <td>
-                <p class="padding-h">{{curso.responsavelCurso}}</p>
+                <a>{{curso.responsavelCurso}}</a>
             </td>
             <td style="text-align: end;">
-                <p class="padding-h">{{curso.horasSemanaisCurso}}</p>
+                <p>{{curso.horasSemanaisCurso}}</p>
                 <button type="button" class="btn btn-danger" (click)="onEdit(curso)"><i class="fa fa-times"></i></button>
                 <button type="button" class="btn btn-warning" (click)="onRemove(curso)"><i class="fa fa-wrench"></i></button>
             </td>

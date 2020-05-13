@@ -7,11 +7,33 @@ import { AlunoModel } from '../models/models'
   styleUrls: ['../app.component.css']
 })
 export class AlunosComponent {
+alunos: AlunoModel[] = [];
 
   constructor() {
     
   }
   
-alunos: AlunoModel[] = [];
+  // alunos = [
+  //   {
+  //     idCurso: 1,
+  //     nomeAluno: 'leo',
+  //     idAluno: 1
+  //   },
+  //   {
+  //     idCurso: 1,
+  //     nomeAluno: 'leo',
+  //     idAluno: 1
+  //   },
+  //   {
+  //     idCurso: 1,
+  //     nomeAluno: 'leo',
+  //     idAluno: 1
+  //   },
+  //   {
+  //     idCurso: 1,
+  //     nomeAluno: 'leo',
+  //     idAluno: 1
+  //   },
+  // ]
 
 }

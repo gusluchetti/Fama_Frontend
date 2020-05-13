@@ -37,6 +37,13 @@ th, td {
   cursor: default;
 }
 
+label{
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+}
+
 .table{
   width: 100%;
   margin-bottom: 1rem;
@@ -62,4 +69,36 @@ th, td {
 .button:hover{
   background-color: #D9D9D9;
   color: #Ff5a34;
+}
+
+#verde{
+  background-color: #60dd49;
+  border: none;
+  border-radius: 8px;
+  margin-left: 10px;
+  padding: 10px;
+  font-weight: 600;
+  transition: all ease-in-out 300ms;
+}
+
+#verde:hover{
+  background-color: #7DB031;
+}
+
+#vermelho{
+  background-color: #d61d23;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 600;
+  transition: all ease-in-out 300ms;
+}
+
+#vermelho:hover{
+  background-color: #881212;
+}
+
+.botoesRight{
+  text-align: end;
+  justify-content: space-between;
 }

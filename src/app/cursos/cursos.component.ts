@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CursoModel } from '../models/models';
 import { CursoService } from './cursos.service';
-import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-cursos',
@@ -26,7 +25,13 @@ export class CursosComponent{
 
     }
 
-  changeMode() { this.editing = !this.editing }
+  changeMode() { 
+    if(this.editing == true){
+      this.editing = false;
+    }else{
+      this.editing = true;
+    }
+  }
 
   onEdit(c?: CursoModel) {
     if(c != null || c!= undefined) {

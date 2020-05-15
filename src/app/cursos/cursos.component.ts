@@ -8,11 +8,38 @@ import { CursoService } from './cursos.service';
   styleUrls: ['../app.component.css']
 })
 export class CursosComponent{
-
+  emptyCurso;
   editing: boolean = false;
   cursoExists: boolean = false;
   selectedCurso = {} as CursoModel
   listCursos: CursoModel[] = [];
+
+  // listCursos = [
+  //   {
+  //     idCurso: 1,
+  //     nomeCurso: 'leo',
+  //     responsavelCurso: 'dsqweqw',
+  //     horasSemanaisCurso: 12
+  //   },
+  //   {
+  //     idCurso: 1,
+  //     nomeCurso: 'leo',
+  //     responsavelCurso: '123',
+  //     horasSemanaisCurso: 12
+  //   },
+  //   {
+  //     idCurso: 1,
+  //     nomeCurso: 'leo',
+  //     responsavelCurso: '123',
+  //     horasSemanaisCurso: 12
+  //   },
+  //   {
+  //     idCurso: 1,
+  //     nomeCurso: 'leo',
+  //     responsavelCurso: '1',
+  //     horasSemanaisCurso: 12
+  //   },
+  // ]
 
   ngOnInit() { 
     this.service.listar().subscribe((data: any) => {

@@ -11,7 +11,7 @@
             <th style="width: 440px">Professor</th>
             <th style="width: 200px">Horas Semanais</th>
         </thead>
-        <tbody *ngFor="let curso of listCursos" ngIf="!editing" >
+        <tbody *ngFor="let curso of listCursos" ngIf="!editing">
             <td>
                 <a>{{curso.idCurso}}</a>
             </td>
@@ -22,9 +22,9 @@
                 <a>{{curso.responsavelCurso}}</a>
             </td>
             <td style="text-align: end;">
-                <p>{{curso.horasSemanaisCurso}}</p>
-                <button type="button" class="btn btn-danger" (click)="onEdit(curso)"><i class="fa fa-times"></i></button>
-                <button type="button" class="btn btn-warning" (click)="onRemove(curso)"><i class="fa fa-wrench"></i></button>
+                <a>{{curso.horasSemanaisCurso}}</a>
+                <button type="button" class="btn" id="edit" (click)="onEdit(curso)"><i class="fa fa-wrench"></i></button>
+                <button type="button" class="btn" id="delete" (click)="onRemove(curso)"><i class="fa fa-times"></i></button>
             </td>
         </tbody>
         <div *ngIf="editing">
@@ -43,14 +43,13 @@
                     <input [(ngModel)]="this.selectedCurso.duracaoCurso" type="number" class="form-control">
 
                     <label for="">Descrição: </label>
-                    <textarea [(ngModel)]="this.selectedCurso.descricaoCurso" type="text" class="form-control"></textarea>
+                    <textarea [(ngModel)]="this.selectedCurso.descricaoCurso" type="text"
+                        class="form-control"></textarea>
                 </div>
             </form>
             <div class="botoesRight">
-                <button id="vermelho" (click)="onCancel()"> Cancelar <i
-                    class="fa fa-times"></i></button>
-                <button id="verde" (click)="onFinish()"> Confirmar <i
-                        class="fa fa-check"></i></button>
+                <button id="vermelho" (click)="onCancel()"> Cancelar <i class="fa fa-times"></i></button>
+                <button id="verde" (click)="onFinish()"> Confirmar <i class="fa fa-check"></i></button>
             </div>
         </div>
     </div>

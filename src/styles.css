@@ -69,7 +69,7 @@ label{
 
 #verde{
   color: whitesmoke;
-  background-color: #4bd433;
+  background-color: #78cc6a;
   border: none;
   border-radius: 8px;
   margin-left: 10px;
@@ -99,4 +99,13 @@ label{
 .botoesRight{
   text-align: end;
   justify-content: space-between;
+}
+
+#delete{
+  color: #d9534f;
+}
+
+#edit{
+  padding-left: 20px;
+  color: #f0ad4e;
 }

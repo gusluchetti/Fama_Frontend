@@ -7,21 +7,21 @@ import { FuncionarioModel } from '../models/models';
   styleUrls: ['../app.component.css']
 })
 export class FuncionariosComponent{
-funcionarios: FuncionarioModel [] = [];
+// funcionarios: FuncionarioModel [] = [];
 
   constructor() { }
 
-  // funcionarios = [
-  //   {
-  //     idFuncionario: 1,
-  //     idCurso: 'Karate',
-  //     nomeFuncionario: 'Karate Man'
-  //   },
-  //   {
-  //     idFuncionario: 2,
-  //     idCurso: 'Arco e Flecha',
-  //     nomeFuncionario: 'Gaviao Arqueiro'
-  //   },
-  // ];
+  funcionarios = [
+    {
+      idFuncionario: 1,
+      idCurso: 'Karate',
+      nomeFuncionario: 'Karate Man'
+    },
+    {
+      idFuncionario: 2,
+      idCurso: 'Arco e Flecha',
+      nomeFuncionario: 'Gaviao Arqueiro'
+    },
+  ];
 
 }

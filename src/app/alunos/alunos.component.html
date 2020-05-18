@@ -1,31 +1,73 @@
 <div class="wrapper flex flex-center-h">
     <div class="content">
-        <div class="align-center margin-bot">
-            <h3 *ngIf="!editing">Lista de Alunos</h3>
-            <h3 *ngIf="editing && !this.selectedAluno.idAluno">Novo Aluno</h3>
-            <h3 *ngIf="editing && this.selectedAluno.idAluno">Editando <strong>{{this.selectedAluno.nomeAluno}}</strong></h3>
-        </div>
-        <thead class="table">
-            <th style="width: 650px">Nome</th>
-            <th style="width: 230px">Aulas</th>
-            <th style="width: 230px">Matrícula</th>
-        </thead>
-        <tbody *ngFor="let aluno of alunos">
-            <td>
-                <a>{{aluno.nomeAluno}}</a>
-            </td>
-            <td>
-                <a>{{aluno.idCurso}}</a>
-            </td>
-            <td>
-                <a>{{aluno.idAluno}}</a>
-            </td>
-        </tbody>
-    </div>
-<!-- </div> -->
+        <div *ngIf="!editing">
+            <div class="align-center margin-bot">
+                <h3 class="main-title" *ngIf="!editing">Lista de Alunos</h3>
+            </div>
 
-<ng-template #cadastro>
-    <div>
+            <thead class="table row no-margin">
+                <th class="col-sm-2">ID</th>
+                <th class="col-sm-3">Nome</th>
+                <th class="col-sm-3">Data de Nascimento</th>
+                <th class="col-sm-2">Telefone</th>
+                <th class="col-md-2"></th>
+            </thead>
+
+            <tbody *ngFor="let aluno of listAlunos" class="row no-margin">
+                <td class="col-sm-2"><a>{{aluno.idAluno}}</a></td>
+                <td class="col-sm-3"><a>{{aluno.nomeAluno}}</a></td>
+                <td class="col-sm-3"><a>{{aluno.dataNascAluno}}</a></td>
+                <td class="col-sm-2"><a>{{aluno.telefoneAluno}}</a></td>
+                <td class="col-md-2 flex-center-h">
+                    <button class="btn yellow" type="button" (click)="onEdit(aluno)"><i class="fa fa-wrench"></i></button>
+                    <button class="btn red" type="button" (click)="onRemove(aluno)"><i class="fa fa-times"></i></button>
+                </td>
+            </tbody>
+        </div>
+
+        <div *ngIf="editing">
+            <h3 class="main-title" *ngIf="!this.selectedAluno.idAluno">Novo Aluno</h3>
+            <h3 class="main-title" *ngIf="this.selectedAluno.idAluno">Editando {{this.selectedAluno.nomeAluno}}</h3>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nome: </label>
+                    <input name="name" [(ngModel)]="this.selectedAluno.nomeAluno" type="text" class="form-control">
+
+                    <label for="nascimento">Data de Nascimento (DD/MM/YYYY): </label>
+                    <input name="nascimento" [(ngModel)]="this.selectedAluno.dataNascAluno" type="date" class="form-control">
+
+                    <label for="cpf">CPF: </label>
+                    <input name="cpf" [(ngModel)]="this.selectedAluno.cpfAluno" type="number" class="form-control">
+
+                    <label for="rg">RG: </label>
+                    <input name="rg" [(ngModel)]="this.selectedAluno.rgAluno" type="number" class="form-control">
+
+                    <label for="estadoCivil">Estado Civil: </label>
+                    <input name="estadoCivil" [(ngModel)]="this.selectedAluno.estadoCivilAluno" type="text" class="form-control">
+
+                    <label for="email">Email: </label>
+                    <input name="email" [(ngModel)]="this.selectedAluno.emailAluno" type="text" class="form-control">
+
+
+                    <label for="telefone">Telefone: </label>
+                    <input name="telefone" [(ngModel)]="this.selectedAluno.telefoneAluno" type="number" class="form-control">
+
+                    <label for="profissao">Profissão: </label>
+                    <input name="profissao" [(ngModel)]="this.selectedAluno.profissaoAluno" type="text" class="form-control">
+                    
+                    <!-- TODO: Selecionar N cursos para um único aluno -->
+
+                </div>
+            </form>
+            <div class="flex-center-h">
+                <button id="vermelho" (click)="onCancel()"> Cancelar <i class="fa fa-times"></i></button>
+                <button id="verde" (click)="onFinish()"> Confirmar <i class="fa fa-check"></i></button>
+            </div>
+        </div>
 
     </div>
 </div>
+
+<button type="button" class="button" alt="Cadastrar Aluno" (click)="onEdit()">
+    <i class="fas fa-user-plus"></i>
+</button>

@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AlunoModel } from '../models/models';
 import { AlunoService } from './alunos.service';
-import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-alunos',
   templateUrl: './alunos.component.html',
   styleUrls: ['../app.component.css']
 })
-export class AlunosComponent {
+export class AlunosComponent{
   selectedAluno: AlunoModel = null
   emptyAluno = {} as AlunoModel
   listAlunos = [] as AlunoModel[]
 
   editing: boolean = false
   alunoExists: boolean = false
+
 
   ngOnInit() { 
     this.service.listar().subscribe((data: any) => {
@@ -27,15 +27,14 @@ export class AlunosComponent {
 
     }
 
-  changeMode() { this.editing = !this.editing; }
+  changeMode() { this.editing = !this.editing }
 
-  onEdit(c: AlunoModel) {
-    if(c.idAluno != null || c.idAluno != undefined) { this.alunoExists = true }
-    else { this.alunoExists = false }
-
-    this.selectedAluno = c
+  onEdit(c?: AlunoModel) {
+    if(c != null || c!= undefined) {
+      this.selectedAluno = c
+      this.alunoExists = true
+    }
     this.changeMode()
-    console.log("aluno a ser modificado/adicionado", this.selectedAluno)
   }
 
   onRemove(c: AlunoModel) {

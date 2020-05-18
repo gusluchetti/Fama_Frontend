@@ -1,9 +1,29 @@
 /* COLORS */
 /*  orange -> #F9542E */
+/* lighter/yellower orange -> #FA6132 */
 /*  teal -> #2DFAB0 */
 /*  blue -> #1492FA */
 /*  pastel orange -> #FA7D61 */
 /*  not quite white -> #FAFAFA */
+
+
+/* COLOR CLASSES! */
+.red {
+    color: #FF271A;
+}
+
+.yellow {
+    color: #FFC01D;
+}
+
+.green {
+    color: #24821A;
+}
+
+/* GENERIC PROPERTIES */
+.fixed {
+    resize: none;
+}
 
 .align-center {
     text-align: center;
@@ -23,6 +43,10 @@
 
 .flex {
     display: flex;
+}
+
+.no-margin {
+    margin: 0px;
 }
 
 .margin-r-l {
@@ -48,6 +72,8 @@
     justify-content: center;
 }
 
+/* SPECIFICS */
+
 .wrapper {
     height: 100%;
     width: 100%;
@@ -71,11 +97,17 @@
     color: #F9542E;
 }
 
+.main-title {
+    color: #F9542E;
+    font-weight: bold;
+    cursor: auto;
+}
+
 .content {
     min-height: 100%;
     width: 1110px;
     padding: 10px;
-    background-color: #F9542E;
+    background-color: rgb(250, 250, 250);
 }
 
 .input-display {

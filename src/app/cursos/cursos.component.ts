@@ -27,14 +27,14 @@ export class CursosComponent{
 
     }
 
-  changeMode() { this.editing = !this.editing; }
+  changeMode() { this.editing = !this.editing }
 
   onEdit(c?: CursoModel) {
     if(c != null || c!= undefined) {
       this.selectedCurso = c
       this.cursoExists = true
     }
-    this.onCancel()
+    this.changeMode()
   }
 
   onRemove(c: CursoModel) {

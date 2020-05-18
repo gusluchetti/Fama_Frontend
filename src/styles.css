@@ -11,12 +11,6 @@ body {
     transition: all 0.3s ease;
 }
 
-h3{
-  color: #FA7D61;
-  font-weight: bold;
-  cursor: default;
-}
-
 thead{
   text-align: center;
 }
@@ -33,7 +27,7 @@ th, td {
   cursor: default;
 }
 
-label{
+label {
   margin-top: 10px;
   font-size: 18px;
   font-weight: 600;
@@ -55,7 +49,7 @@ label{
   font-weight: 600;
   color: whitesmoke;
   text-decoration: none;
-  background-color: #FA7D61;
+  background-color: #F9542E;
   border: none;
   border-radius: 50%;
   padding: 25px;
@@ -94,18 +88,4 @@ label{
 
 #vermelho:hover{
   background-color: #c5191f;
-}
-
-.botoesRight{
-  text-align: end;
-  justify-content: space-between;
-}
-
-#delete{
-  color: #d9534f;
-}
-
-#edit{
-  padding-left: 20px;
-  color: #f0ad4e;
 }

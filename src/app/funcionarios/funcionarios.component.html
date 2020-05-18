@@ -1,27 +1,81 @@
 <div class="wrapper flex flex-center-h">
     <div class="content">
-        <div class="align-center margin-bot">
-            <h3>Lista de Professores</h3>
+        <div *ngIf="!editing">
+            <div class="align-center margin-bot">
+                <h3 class="main-title" *ngIf="!editing">Lista de Funcionarios</h3>
+            </div>
+
+            <thead class="table row no-margin">
+                <th class="col-sm-2">ID</th>
+                <th class="col-sm-3">Nome</th>
+                <th class="col-sm-3">Data de Nascimento</th>
+                <th class="col-sm-2">Telefone</th>
+                <th class="col-md-2"></th>
+            </thead>
+
+            <tbody *ngFor="let funcionario of listFuncionarios" class="row no-margin">
+                <td class="col-sm-2"><a>{{funcionario.idFuncionario}}</a></td>
+                <td class="col-sm-3"><a>{{funcionario.nomeFuncionario}}</a></td>
+                <td class="col-sm-3"><a>{{funcionario.dataNascFuncionario}}</a></td>
+                <td class="col-sm-2"><a>{{funcionario.telefoneFuncionario}}</a></td>
+                <td class="col-md-2 flex-center-h">
+                    <button class="btn yellow" type="button" (click)="onEdit(funcionario)"><i class="fa fa-wrench"></i></button>
+                    <button class="btn red" type="button" (click)="onRemove(funcionario)"><i class="fa fa-times"></i></button>
+                </td>
+            </tbody>
         </div>
-        <thead class="table">
-            <th style="width: 650px">Nome</th>
-            <th style="width: 250px">Aulas</th>
-            <th style="width: 230px">Matrícula</th>
-        </thead>
-        <tbody *ngFor="let funcionario of funcionarios">
-            <td>
-                <a>{{funcionario.nomeFuncionario}}</a>
-            </td>
-            <td>
-                <a>{{funcionario.idCurso}}</a>
-            </td>
-            <td>
-                <a>{{funcionario.idFuncionario}}</a>
-            </td>
-        </tbody>
+
+        <div *ngIf="editing">
+            <h3 class="main-title" *ngIf="!this.selectedFuncionario.idFuncionario">Novo Funcionario</h3>
+            <h3 class="main-title" *ngIf="this.selectedFuncionario.idFuncionario">Editando {{this.selectedFuncionario.nomeFuncionario}}</h3>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nome: </label>
+                    <input name="name" [(ngModel)]="this.selectedFuncionario.nomeFuncionario" type="text" class="form-control">
+
+                    <label for="nascimento">Data de Nascimento (DD/MM/YYYY): </label>
+                    <input name="nascimento" [(ngModel)]="this.selectedFuncionario.dataNascFuncionario" type="date" class="form-control">
+
+                    <label for="cpf">CPF: </label>
+                    <input name="cpf" [(ngModel)]="this.selectedFuncionario.cpfFuncionario" type="number" class="form-control">
+
+                    <label for="rg">RG: </label>
+                    <input name="rg" [(ngModel)]="this.selectedFuncionario.rgFuncionario" type="number" class="form-control">
+
+                    <label for="estadoCivil">Estado Civil: </label>
+                    <input name="estadoCivil" [(ngModel)]="this.selectedFuncionario.estadoCivilFuncionario" type="text" class="form-control">
+
+                    <label for="email">Email: </label>
+                    <input name="email" [(ngModel)]="this.selectedFuncionario.emailFuncionario" type="text" class="form-control">
+
+                    <label for="telefone">Telefone: </label>
+                    <input name="telefone" [(ngModel)]="this.selectedFuncionario.telefoneFuncionario" type="number" class="form-control">
+
+                    <label for="atuacao">Atuação: </label>
+                    <input name="atuacao" [(ngModel)]="this.selectedFuncionario.atuacaoFuncionario" type="text" class="form-control">
+                    
+                    <label for="cargaHoraria">Carga Horária: </label>
+                    <input name="cargaHoraria" [(ngModel)]="this.selectedFuncionario.cargaHorariaFuncionario" type="text" class="form-control">
+                    
+                    <label for="salario">Salário: </label>
+                    <input name="salario" [(ngModel)]="this.selectedFuncionario.salarioFuncionario" type="text" class="form-control">
+                    
+                    <label for="formacao">Formação: </label>
+                    <input name="formacao" [(ngModel)]="this.selectedFuncionario.formacaoFuncionario" type="text" class="form-control">
+                    
+                    <!-- TODO: Selecionar N cursos para um único funcionario -->
+
+                </div>
+            </form>
+            <div class="flex-center-h">
+                <button id="vermelho" (click)="onCancel()"> Cancelar <i class="fa fa-times"></i></button>
+                <button id="verde" (click)="onFinish()"> Confirmar <i class="fa fa-check"></i></button>
+            </div>
+        </div>
+
     </div>
 </div>
 
-<button type="button" class="button" alt="Cadastrar Aluno">
+<button type="button" class="button" alt="Cadastrar Funcionario" (click)="onEdit()">
     <i class="fas fa-user-plus"></i>
 </button>

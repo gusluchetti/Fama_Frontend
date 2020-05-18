@@ -4,7 +4,7 @@
 }
 
 .navbar{
-    background-color: whitesmoke;
+    background-color: #FA7D61;
     padding: 0;
     height: 60px;
 }
@@ -34,22 +34,23 @@ nav li{
 }
 
 nav a {
-    color: #F9542E;
+    color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
 }
 
-nav a:hover {
-    color:#F9542E;
-}
+/* nav a:hover {
+    color:#f0f0f0;
+} */
+
 /* animando hover*/
 nav a::before{
     content: '';
     display: block;
     height: 6px;
     width: 100%;
-    background-color: #F9542E;
+    background-color: #fff;
     position: absolute;
     top: 0;
     width: 0%;

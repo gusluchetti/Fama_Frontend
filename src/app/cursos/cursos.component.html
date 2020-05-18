@@ -5,73 +5,52 @@
             <h3 *ngIf="editing && !this.selectedCurso.idCurso">Novo Curso</h3>
             <h3 *ngIf="editing && this.selectedCurso.idCurso">Editando <strong>{{this.selectedCurso.nomeCurso}}</strong></h3>
         </div>
-        <div *ngIf="!editing" class="row">
-            <div class="col-sm-4">
-                <label>Nome: </label>
-            </div>
-            <div class="col-sm-3">
-                <label>Responsável do Curso: </label>
-            </div>
-            <div class="col-sm-3">
-                <label>Horas Semanais: </label>
-            </div>
-        </div>
-
-        <thead class="table">
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Professor</th>
-            <th>Horas Semanais</th>
+        <thead *ngIf="!editing" class="table">
+            <th style="width: 115px">ID</th>
+            <th style="width: 440px">Nome</th>
+            <th style="width: 440px">Professor</th>
+            <th style="width: 200px">Horas Semanais</th>
         </thead>
-
-        <div *ngIf="!editing" >
-            <div *ngFor="let curso of listCursos">
-                <div class="flex row">
-                    <div class="col-sm-4">
-                        <div class="input-display"><p class="padding-h">{{curso.nomeCurso}}</p></div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="input-display"><p class="padding-h">{{curso.responsavelCurso}}</p></div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="input-display"><p class="padding-h">{{curso.horasSemanaisCurso}}</p></div>
-                    </div>
-                    <div class="col-sm-1">
-                        <button type="button" class="btn btn-warning" (click)="onEdit(curso)"><i class="fa fa-wrench"></i></button>
-                    </div>
-                    <div class="col-sm-1">
-                        <button type="button" class="btn btn-danger" (click)="onRemove(curso)"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <tbody *ngFor="let curso of listCursos" ngIf="!editing">
+            <td>
+                <a>{{curso.idCurso}}</a>
+            </td>
+            <td>
+                <a>{{curso.nomeCurso}}</a>
+            </td>
+            <td>
+                <a>{{curso.responsavelCurso}}</a>
+            </td>
+            <td style="text-align: end;">
+                <a>{{curso.horasSemanaisCurso}}</a>
+                <button type="button" class="btn" id="edit" (click)="onEdit(curso)"><i class="fa fa-wrench"></i></button>
+                <button type="button" class="btn" id="delete" (click)="onRemove(curso)"><i class="fa fa-times"></i></button>
+            </td>
+        </tbody>
         <div *ngIf="editing">
             <form>
                 <div class="form-group">
-                    <label for="nomeCurso">Nome: </label>
-                    <input type="text" name="nomeCurso" id="nomeCurso" class="form-control" [(ngModel)]="selectedCurso.nomeCurso">
-                </div>
-                <div class="form-group">
-                    <label for="responsavelCurso">Responsável: </label>
-                    <input type="text" name="responsavelCurso" id="responsavelCurso" class="form-control" [(ngModel)]="selectedCurso.responsavelCurso">
-                </div>
-                <div class="form-group">
-                    <label for="horasSemanaisCurso">Horas Semanais: </label>
-                    <input type="number" name="horasSemanaisCurso" id="horasSemanaisCurso" class="form-control" [(ngModel)]="selectedCurso.horasSemanaisCurso">
-                </div>
-                <div class="form-group">
-                    <label for="duracaoCurso">Duração: </label>
-                    <input type="number" name="duracaoCurso" id="duracaoCurso" class="form-control" [(ngModel)]="selectedCurso.duracaoCurso">
-                </div>
-                <div class="form-group">
-                    <label for="descricaoCurso">Descrição: </label>
-                    <textarea type="text" name="descricaoCurso" id="descricaoCurso" class="form-control" [(ngModel)]="selectedCurso.descricaoCurso"></textarea>
+                    <label for="">Nome: </label>
+                    <input [(ngModel)]="this.selectedCurso.nomeCurso" type="text" class="form-control">
+
+                    <label for="">Responsável: </label>
+                    <input [(ngModel)]="this.selectedCurso.responsavelCurso" type="text" class="form-control">
+
+                    <label for="">Horas Semanais: </label>
+                    <input [(ngModel)]="this.selectedCurso.horasSemanaisCurso" type="number" class="form-control">
+
+                    <label for="">Duração: </label>
+                    <input [(ngModel)]="this.selectedCurso.duracaoCurso" type="number" class="form-control">
+
+                    <label for="">Descrição: </label>
+                    <textarea [(ngModel)]="this.selectedCurso.descricaoCurso" type="text"
+                        class="form-control"></textarea>
                 </div>
             </form>
-            
-            <button type="button" class="btn btn-success margin-r-l push-right" (click)="onFinish()"> CONFIRMAR <i class="fa fa-check"></i></button>
-            <button type="button" class="btn btn-danger margin-r-l push-right" (click)="onCancel()"> CANCELAR <i class="fa fa-times"></i></button>
+            <div class="botoesRight">
+                <button id="vermelho" (click)="onCancel()"> Cancelar <i class="fa fa-times"></i></button>
+                <button id="verde" (click)="onFinish()"> Confirmar <i class="fa fa-check"></i></button>
+            </div>
         </div>
 
     </div>

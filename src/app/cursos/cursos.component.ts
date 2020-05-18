@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CursoModel } from '../models/models';
 import { CursoService } from './cursos.service';
-import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-cursos',
@@ -15,6 +14,7 @@ export class CursosComponent{
 
   editing: boolean = false
   cursoExists: boolean = false
+
 
   ngOnInit() { 
     this.service.listar().subscribe((data: any) => {

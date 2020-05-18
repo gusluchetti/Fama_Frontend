@@ -8,7 +8,7 @@ import { isNullOrUndefined } from 'util';
   templateUrl: './alunos.component.html',
   styleUrls: ['../app.component.css']
 })
-export class AlunosComponent{
+export class AlunosComponent {
   selectedAluno: AlunoModel = null
   emptyAluno = {} as AlunoModel
   listAlunos = [] as AlunoModel[]

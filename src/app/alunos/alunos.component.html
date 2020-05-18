@@ -6,54 +6,26 @@
             <h3 *ngIf="editing && this.selectedAluno.idAluno">Editando <strong>{{this.selectedAluno.nomeAluno}}</strong></h3>
         </div>
         <thead class="table">
-            <th>Nome</th>
-            <th>Aulas</th>
-            <th>Matrícula</th>
+            <th style="width: 650px">Nome</th>
+            <th style="width: 230px">Aulas</th>
+            <th style="width: 230px">Matrícula</th>
         </thead>
-        <tbody *ngFor="let aluno of listAlunos">
-            <div class="row">
-                <div class="col-sm-7">
-                    <div class="input-display"><p class="padding-h">{{aluno.nomeAluno}}</p></div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="input-display"><p class="padding-h">{{aluno.idCurso}}</p></div>
-                </div>
-                <div class="col-sm-2">
-                    <div class="input-display"><p class="padding-h">{{aluno.idAluno}}</p></div>
-                </div>
-            </div>
+        <tbody *ngFor="let aluno of alunos">
+            <td>
+                <a>{{aluno.nomeAluno}}</a>
+            </td>
+            <td>
+                <a>{{aluno.idCurso}}</a>
+            </td>
+            <td>
+                <a>{{aluno.idAluno}}</a>
+            </td>
         </tbody>
     </div>
 <!-- </div> -->
 
-    <button type="button" class="button" alt="Cadastrar Aluno">
-        <i class="fas fa-user-plus"></i>
-    </button>
+<ng-template #cadastro>
+    <div>
 
-    <div *ngIf="editing">
-        <form>
-            <div class="form-group">
-                <label for="nomeAluno">Nome: </label>
-                <input type="text" name="nomeAluno" id="nomeAluno" class="form-control" [(ngModel)]="selectedAluno.nomeAluno">
-            </div>
-            <div class="form-group">
-                <label for="emailAluno">Email: </label>
-                <input type="text" name="emailAluno" id="emailAluno" class="form-control" [(ngModel)]="selectedAluno.emailAluno">
-            </div>
-            <!-- <div class="form-group">
-                <label for="horasSemanaisAluno">Horas Semanais: </label>
-                <input type="number" name="horasSemanaisAluno" id="horasSemanaisAluno" class="form-control" [(ngModel)]="selectedAluno.horasSemanaisAluno">
-            </div>
-            <div class="form-group">
-                <label for="duracaoAluno">Duração: </label>
-                <input type="number" name="duracaoAluno" id="duracaoAluno" class="form-control" [(ngModel)]="selectedAluno.duracaoAluno">
-            </div>
-            <div class="form-group">
-                <label for="descricaoAluno">Descrição: </label>
-                <textarea type="text" name="descricaoAluno" id="descricaoAluno" class="form-control" [(ngModel)]="selectedAluno.descricaoAluno"></textarea>
-            </div> -->
-        </form>
-        <button type="button" class="btn btn-success margin-r-l push-right" (click)="onFinish()"> CONFIRMAR <i class="fa fa-check"></i></button>
-        <button type="button" class="btn btn-danger margin-r-l push-right" (click)="onCancel()"> CANCELAR <i class="fa fa-times"></i></button>
     </div>
 </div>

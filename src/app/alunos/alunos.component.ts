@@ -8,8 +8,7 @@ import { AlunoService } from './alunos.service';
   styleUrls: ['../app.component.css']
 })
 export class AlunosComponent{
-  selectedAluno: AlunoModel = null
-  emptyAluno = {} as AlunoModel
+  selectedAluno = {} as AlunoModel
   listAlunos = [] as AlunoModel[]
 
   editing: boolean = false
@@ -24,7 +23,6 @@ export class AlunosComponent{
 
   constructor(
     private service: AlunoService) { 
-
     }
 
   changeMode() { this.editing = !this.editing }
@@ -53,26 +51,20 @@ export class AlunosComponent{
 
   //!!!!!TODO: ONLY CHANGE LISTS IF SUCESS
   onFinish() {
-    console.log("aluno a ser enviado", this.selectedAluno)
     // alterar aluno existente, else adicionar novo aluno
      if(this.alunoExists) {
-      console.log("UPDATE")   
       this.service.alterar(this.selectedAluno).subscribe((data: any) => {});
       let success = true;
 
       if (success) {
-        console.log("Aluno alterado com sucesso!")
       }
     }
      else {
-      console.log("CREATE")   
       this.service.criar(this.selectedAluno).subscribe((data: any) => {});
       let success = true;
 
       if (success) {
         this.listAlunos.push(this.selectedAluno)
-        console.log("Aluno criado com sucesso!")
-
       }
     }
     this.changeMode()

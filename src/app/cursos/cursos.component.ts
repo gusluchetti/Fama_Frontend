@@ -8,8 +8,7 @@ import { CursoService } from './cursos.service';
   styleUrls: ['../app.component.css']
 })
 export class CursosComponent{
-  selectedCurso: CursoModel = null
-  emptyCurso = {} as CursoModel
+  selectedCurso = {} as CursoModel
   listCursos = [] as CursoModel[]
 
   editing: boolean = false
@@ -53,27 +52,18 @@ export class CursosComponent{
 
   //!!!!!TODO: ONLY CHANGE LISTS IF SUCESS
   onFinish() {
-    console.log("curso a ser enviado", this.selectedCurso)
     // alterar curso existente, else adicionar novo curso
      if(this.cursoExists) {
-      console.log("UPDATE")   
       this.service.alterar(this.selectedCurso).subscribe((data: any) => {});
       let success = true;
 
-      if (success) {
-        console.log("Curso alterado com sucesso!")
-      }
+      if (success) { }
     }
      else {
-      console.log("CREATE")   
       this.service.criar(this.selectedCurso).subscribe((data: any) => {});
       let success = true;
 
-      if (success) {
-        this.listCursos.push(this.selectedCurso)
-        console.log("Curso criado com sucesso!")
-
-      }
+      if (success) this.listCursos.push(this.selectedCurso)
     }
     this.changeMode()
   }

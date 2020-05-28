@@ -12,6 +12,7 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { CursoService } from './cursos/cursos.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AlunoService } from './alunos/alunos.service';
+import { FuncionarioService } from './funcionarios/funcionarios.service';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,9 @@ import { AlunoService } from './alunos/alunos.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    AlunoService,
     CursoService,
-    AlunoService
+    FuncionarioService
   ],
   providers: [],
   bootstrap: [AppComponent]

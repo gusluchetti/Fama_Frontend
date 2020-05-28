@@ -10,7 +10,7 @@
                 <th class="col-sm-3">Nome</th>
                 <th class="col-sm-3">Responsável</th>
                 <th class="col-sm-2">Horas Semanais</th>
-                <th class="col-md-2"></th>
+                <th class="col-md-2">Ações</th>
             </thead>
 
             <tbody *ngFor="let curso of listCursos" class="row no-margin">
@@ -39,9 +39,6 @@
                     <label for="horasSemanais">Horas Semanais: </label>
                     <input name="horasSemanais" [(ngModel)]="this.selectedCurso.horasSemanaisCurso" type="number" class="form-control">
 
-                    <label for="duracao">Duração: </label>
-                    <input name="duracao" [(ngModel)]="this.selectedCurso.duracaoCurso" type="number" class="form-control">
-
                     <label for="descricao">Descrição: </label>
                     <textarea name="descricao" [(ngModel)]="this.selectedCurso.descricaoCurso" type="text" class="form-control fixed"></textarea>
                 </div>
@@ -56,5 +53,5 @@
 </div>
 
 <button type="button" class="button" alt="Cadastrar Aluno" (click)="onEdit()">
-    <i class="fas fa-user-plus"></i>
+    <i class="fas fa-plus"></i>
 </button>

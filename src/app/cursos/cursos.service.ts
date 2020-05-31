@@ -25,6 +25,10 @@ export class CursoService {
         return this.http.post('/api/curso/criar', JSON.stringify(curso), this.httpOptions);
     }
 
+    obter(idCurso: number) {
+        return this.http.get('/api/curso/obter/?idCurso='+ idCurso, this.httpOptions);
+    }
+
     listar() {
         return this.http.get('/api/curso/listar');
     }

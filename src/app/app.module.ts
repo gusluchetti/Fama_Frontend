@@ -13,6 +13,7 @@ import { CursoService } from './cursos/cursos.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AlunoService } from './alunos/alunos.service';
 import { FuncionarioService } from './funcionarios/funcionarios.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FuncionarioService } from './funcionarios/funcionarios.service';
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

@@ -1,23 +1,21 @@
 <div class="wrapper flex flex-center-h">
     <div class="content">
-        <div *ngIf="!editing">
-            <div class="align-center margin-bot">
-                <h3 class="main-title" *ngIf="!editing">Lista de Cursos</h3>
-            </div>
-
+        <div class="align-center margin-bot">
+            <h3 class="main-title" *ngIf="!editing">Lista de Cursos</h3>
+        </div>
+        
+        <div class="table-border" *ngIf="!editing">
             <thead class="table row no-margin">
-                <th class="col-sm-2">ID</th>
-                <th class="col-sm-3">Nome</th>
-                <th class="col-sm-3">Responsável</th>
-                <th class="col-sm-2">Horas Semanais</th>
-                <th class="col-md-2">Ações</th>
+                <th class="col-sm-4"><span>Nome</span></th>
+                <th class="col-sm-3"><span>Responsável</span></th>
+                <th class="col-sm-3"><span>Horas Semanais</span></th>
+                <th class="col-md-2"><span>Ações</span></th>
             </thead>
 
             <tbody *ngFor="let curso of listCursos" class="row no-margin">
-                <td class="col-sm-2"><a>{{curso.idCurso}}</a></td>
-                <td class="col-sm-3"><a>{{curso.nomeCurso}}</a></td>
-                <td class="col-sm-3"><a>{{curso.responsavelCurso}}</a></td>
-                <td class="col-sm-2"><a>{{curso.horasSemanaisCurso}}</a></td>
+                <td class="col-sm-4"><span><strong class="pointer strong" (click)="openInfoModal(curso, infoModal)">{{curso.nomeCurso}}</strong></span></td>
+                <td class="col-sm-3"><span>{{curso.responsavelCurso}}</span></td>
+                <td class="col-sm-3"><span>{{curso.horasSemanaisCurso}}</span></td>
                 <td class="col-md-2 flex-center-h">
                     <button class="btn yellow" type="button" (click)="onEdit(curso)"><i class="fa fa-wrench"></i></button>
                     <button class="btn red" type="button" (click)="onRemove(curso)"><i class="fa fa-times"></i></button>
@@ -44,8 +42,8 @@
                 </div>
             </form>
             <div class="flex-center-h">
-                <button id="vermelho" (click)="onCancel()"> Cancelar <i class="fa fa-times"></i></button>
-                <button id="verde" (click)="onFinish()"> Confirmar <i class="fa fa-check"></i></button>
+                <button class="btn btn-danger margin-r" (click)="changeMode(); onCancel();"> Cancelar <i class="fa fa-times"></i></button>
+                <button class="btn btn-success margin-r" (click)="onFinish()"> Confirmar <i class="fa fa-check"></i></button>
             </div>
         </div>
 
@@ -55,3 +53,16 @@
 <button type="button" class="button" alt="Cadastrar Aluno" (click)="onEdit()">
     <i class="fas fa-plus"></i>
 </button>
+
+<ng-template #infoModal>
+    <div class="modal-header">
+      <h2>Informações Completas</h2>
+    </div>
+    <div class="modal-body">
+        <p><span>ID do Curso: </span>{{selectedCurso.idCurso}}</p>
+        <p><span>Nome: </span>{{selectedCurso.nomeCurso}}</p>
+        <p><span>Responsável: </span>{{selectedCurso.responsavelCurso}}</p>
+        <p><span>Horas Semanais: </span>{{selectedCurso.horasSemanaisCurso}}</p>
+        <p><span>Descrição do Curso: </span>{{selectedCurso.descricaoCurso}}</p>
+    </div>
+</ng-template>

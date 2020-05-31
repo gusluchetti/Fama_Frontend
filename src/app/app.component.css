@@ -1,13 +1,26 @@
 /* COLORS */
+
+
 /*  orange -> #F9542E */
+
+
 /* lighter/yellower orange -> #FA6132 */
+
+
 /*  teal -> #2DFAB0 */
+
+
 /*  blue -> #1492FA */
+
+
 /*  pastel orange -> #FA7D61 */
+
+
 /*  not quite white -> #FAFAFA */
 
 
 /* COLOR CLASSES! */
+
 .red {
     color: #FF271A;
 }
@@ -20,7 +33,9 @@
     color: #24821A;
 }
 
+
 /* GENERIC PROPERTIES */
+
 .fixed {
     resize: none;
 }
@@ -77,6 +92,7 @@
     justify-content: center;
 }
 
+
 /* SPECIFICS */
 
 .wrapper {
@@ -92,13 +108,13 @@
     width: 100%;
 }
 
-.navbar a{
+.navbar a {
     text-decoration: none;
     color: #000;
     font-size: 20px;
 }
 
-.navbar a:hover{
+.navbar a:hover {
     color: #F9542E;
 }
 
@@ -124,19 +140,19 @@
 .input-display {
     background: #fafafa;
     border-radius: 6px;
-    -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
-    -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
-    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
-    -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
-    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
 span {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
-  }
+}

@@ -5,24 +5,25 @@
                 <h3 class="main-title" *ngIf="!editing">Lista de Funcionarios</h3>
             </div>
 
-            <thead class="table row no-margin">
-                <th class="col-sm-2">ID</th>
-                <th class="col-sm-3">Nome</th>
-                <th class="col-sm-3">Data de Nascimento</th>
-                <th class="col-sm-2">Telefone</th>
-                <th class="col-md-2"></th>
-            </thead>
+            <div class="table-border">
+                <thead class="table row no-margin">
+                    <th class="col-sm-4"><span>Nome</span></th>
+                    <th class="col-sm-3"><span>CPF</span></th>
+                    <th class="col-sm-3"><span>Telefone</span></th>
+                    <th class="col-md-2"><span>Ações</span></th>
+                </thead>
 
-            <tbody *ngFor="let funcionario of listFuncionarios" class="row no-margin">
-                <td class="col-sm-2"><a>{{funcionario.idFuncionario}}</a></td>
-                <td class="col-sm-3"><a>{{funcionario.nomeFuncionario}}</a></td>
-                <td class="col-sm-3"><a>{{funcionario.dataNascFuncionario}}</a></td>
-                <td class="col-sm-2"><a>{{funcionario.telefoneFuncionario}}</a></td>
-                <td class="col-md-2 flex-center-h">
-                    <button class="btn yellow" type="button" (click)="onEdit(funcionario)"><i class="fa fa-wrench"></i></button>
-                    <button class="btn red" type="button" (click)="onRemove(funcionario)"><i class="fa fa-times"></i></button>
-                </td>
-            </tbody>
+                <tbody *ngFor="let funcionario of listFuncionarios" class="row no-margin">
+                    <td class="col-sm-4"><span><strong class="pointer strong" (click)="openInfoModal(funcionario, infoModal)">{{funcionario.nomeFuncionario}}</strong></span></td>
+                    <td class="col-sm-3"><span>{{funcionario.cpfFuncionario}}</span></td>
+                    <td class="col-sm-3"><span>{{funcionario.telefoneFuncionario}}</span></td>
+                    <td class="col-md-2 flex-center-h">
+                        <button class="btn yellow" type="button" (click)="onEdit(funcionario)"><i class="fa fa-wrench"></i></button>
+                        <button class="btn red" type="button" (click)="onRemove(funcionario)"><i class="fa fa-times"></i></button>
+                    </td>
+                </tbody>
+            </div>
+
         </div>
 
         <div *ngIf="editing">
@@ -62,14 +63,11 @@
                     
                     <label for="formacao">Formação: </label>
                     <input name="formacao" [(ngModel)]="this.selectedFuncionario.formacaoFuncionario" type="text" class="form-control">
-                    
-                    <!-- TODO: Selecionar N cursos para um único funcionario -->
-
                 </div>
             </form>
             <div class="flex-center-h">
-                <button id="vermelho" (click)="onCancel()"> Cancelar <i class="fa fa-times"></i></button>
-                <button id="verde" (click)="onFinish()"> Confirmar <i class="fa fa-check"></i></button>
+                <button class="btn btn-danger margin-r" (click)="changeMode(); onCancel();"> Cancelar <i class="fa fa-times"></i></button>
+                <button class="btn btn-success margin-r" (click)="onFinish()"> Confirmar <i class="fa fa-check"></i></button>
             </div>
         </div>
 
@@ -79,3 +77,23 @@
 <button type="button" class="button" alt="Cadastrar Funcionario" (click)="onEdit()">
     <i class="fas fa-user-plus"></i>
 </button>
+
+<ng-template #infoModal>
+    <div class="modal-header">
+      <h2>Informações Completas</h2>
+    </div>
+    <div class="modal-body">
+        <p><span>ID do Funcionário: </span>{{selectedFuncionario.idFuncionario}}</p>
+        <p><span>Nome: </span>{{selectedFuncionario.nomeFuncionario}}</p>
+        <p><span>Data de Nascimento: </span>{{selectedFuncionario.dataNascFuncionario}}</p>
+        <p><span>CPF: </span>{{selectedFuncionario.cpfFuncionario}}</p>
+        <p><span>RG: </span>{{selectedFuncionario.rgFuncionario}}</p>
+        <p><span>Estado Civil: </span>{{selectedFuncionario.estadoCivilFuncionario}}</p>
+        <p><span>Email: </span>{{selectedFuncionario.emailFuncionario}}</p>
+        <p><span>Telefone: </span>{{selectedFuncionario.telefoneFuncionario}}</p>
+        <p><span>Atuação: </span>{{selectedFuncionario.atuacaoFuncionario}}</p>
+        <p><span>Carga Horária: </span>{{selectedFuncionario.cargaHorariaFuncionario}}</p>
+        <p><span>Salário: </span>{{selectedFuncionario.salarioFuncionario}}</p>
+        <p><span>Formação: </span>{{selectedFuncionario.formacaoFuncionario}}</p>
+    </div>
+</ng-template>

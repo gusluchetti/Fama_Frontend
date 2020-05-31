@@ -30,34 +30,34 @@ export class FuncionariosComponent {
 	}
 
 	changeMode() { this.editing = !this.editing }
+	onCancel() { this.selectedFuncionario = {} as FuncionarioModel }
 
-	openInfoModal(c: FuncionarioModel, modal: any) {
-		this.service.obter(c.idFuncionario).subscribe((data: any) => {
+	openInfoModal(f: FuncionarioModel, modal: any) {
+		this.service.obter(f.idFuncionario).subscribe((data: any) => {
+			console.log('id fun ->', f.idFuncionario)
 			this.selectedFuncionario = data
+			console.log('fun ->', f)
 		});
 		this.modalService.open(modal)
 	}
 
-	onEdit(c?: FuncionarioModel) {
-		if (c != null || c != undefined) {
-			this.selectedFuncionario = c
+	onEdit(f?: FuncionarioModel) {
+		if (f != null || f != undefined) {
+			this.service.obter(f.idFuncionario).subscribe((data: any) => {
+				this.selectedFuncionario = data
+			  });
 			this.funcionarioExists = true
 		}
 		this.changeMode()
 	}
 
-	onRemove(c: FuncionarioModel) {
-		this.service.excluir(c.idFuncionario).subscribe();
-		let index = this.listFuncionarios.indexOf(c)
+	onRemove(f: FuncionarioModel) {
+		this.service.excluir(f.idFuncionario).subscribe();
+		let index = this.listFuncionarios.indexOf(f)
 
 		if (index != null || index != undefined) {
 			this.listFuncionarios.splice(index, 1)
 		}
-	}
-
-	onCancel() {
-		this.selectedFuncionario = {} as FuncionarioModel
-		this.changeMode()
 	}
 
 	onFinish() {

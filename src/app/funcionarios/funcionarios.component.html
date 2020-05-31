@@ -7,16 +7,18 @@
 
             <div class="table-border">
                 <thead class="table row no-margin">
-                    <th class="col-sm-4"><span>Nome</span></th>
-                    <th class="col-sm-3"><span>CPF</span></th>
-                    <th class="col-sm-3"><span>Telefone</span></th>
+                    <th class="col-sm-3"><span>Nome</span></th>
+                    <th class="col-sm-2"><span>CPF</span></th>
+                    <th class="col-sm-2"><span>Telefone</span></th>
+                    <th class="col-sm-3"><span>Atuação</span></th>
                     <th class="col-md-2"><span>Ações</span></th>
                 </thead>
 
                 <tbody *ngFor="let funcionario of listFuncionarios" class="row no-margin">
-                    <td class="col-sm-4"><span><strong class="pointer strong" (click)="openInfoModal(funcionario, infoModal)">{{funcionario.nomeFuncionario}}</strong></span></td>
-                    <td class="col-sm-3"><span>{{funcionario.cpfFuncionario}}</span></td>
-                    <td class="col-sm-3"><span>{{funcionario.telefoneFuncionario}}</span></td>
+                    <td class="col-sm-3"><span><strong class="pointer strong" (click)="openInfoModal(funcionario, infoModal)">{{funcionario.nomeFuncionario}}</strong></span></td>
+                    <td class="col-sm-2"><span>{{funcionario.cpfFuncionario}}</span></td>
+                    <td class="col-sm-2"><span>{{funcionario.telefoneFuncionario}}</span></td>
+                    <td class="col-sm-3"><span>{{funcionario.atuacaoFuncionario}}</span></td>
                     <td class="col-md-2 flex-center-h">
                         <button class="btn yellow" type="button" (click)="onEdit(funcionario)"><i class="fa fa-wrench"></i></button>
                         <button class="btn red" type="button" (click)="onRemove(funcionario)"><i class="fa fa-times"></i></button>
@@ -54,13 +56,13 @@
 
                     <label for="atuacao">Atuação: </label>
                     <input name="atuacao" [(ngModel)]="this.selectedFuncionario.atuacaoFuncionario" type="text" class="form-control">
-                    
+
                     <label for="cargaHoraria">Carga Horária: </label>
                     <input name="cargaHoraria" [(ngModel)]="this.selectedFuncionario.cargaHorariaFuncionario" type="text" class="form-control">
-                    
+
                     <label for="salario">Salário: </label>
                     <input name="salario" [(ngModel)]="this.selectedFuncionario.salarioFuncionario" type="text" class="form-control">
-                    
+
                     <label for="formacao">Formação: </label>
                     <input name="formacao" [(ngModel)]="this.selectedFuncionario.formacaoFuncionario" type="text" class="form-control">
                 </div>
@@ -80,20 +82,46 @@
 
 <ng-template #infoModal>
     <div class="modal-header">
-      <h2>Informações Completas</h2>
+        <h2>Informações Completas</h2>
     </div>
     <div class="modal-body">
-        <p><span>ID do Funcionário: </span>{{selectedFuncionario.idFuncionario}}</p>
-        <p><span>Nome: </span>{{selectedFuncionario.nomeFuncionario}}</p>
-        <p><span>Data de Nascimento: </span>{{selectedFuncionario.dataNascFuncionario}}</p>
-        <p><span>CPF: </span>{{selectedFuncionario.cpfFuncionario}}</p>
-        <p><span>RG: </span>{{selectedFuncionario.rgFuncionario}}</p>
-        <p><span>Estado Civil: </span>{{selectedFuncionario.estadoCivilFuncionario}}</p>
-        <p><span>Email: </span>{{selectedFuncionario.emailFuncionario}}</p>
-        <p><span>Telefone: </span>{{selectedFuncionario.telefoneFuncionario}}</p>
-        <p><span>Atuação: </span>{{selectedFuncionario.atuacaoFuncionario}}</p>
-        <p><span>Carga Horária: </span>{{selectedFuncionario.cargaHorariaFuncionario}}</p>
-        <p><span>Salário: </span>{{selectedFuncionario.salarioFuncionario}}</p>
-        <p><span>Formação: </span>{{selectedFuncionario.formacaoFuncionario}}</p>
+        <div class="detailed-info">
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">ID do Funcionário:  </span></p> <p>{{selectedFuncionario.idFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Nome:  </span></p> <p>{{selectedFuncionario.nomeFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Data de Nascimento:  </span></p> <p>{{selectedFuncionario.dataNascFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">CPF:  </span></p> <p>{{selectedFuncionario.cpfFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">RG:  </span></p> <p>{{selectedFuncionario.rgFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Estado Civil:  </span></p> <p>{{selectedFuncionario.estadoCivilFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Email:  </span></p> <p>{{selectedFuncionario.emailFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Telefone:  </span></p> <p>{{selectedFuncionario.telefoneFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Atuação:  </span></p> <p>{{selectedFuncionario.atuacaoFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Carga Horária:  </span></p> <p>{{selectedFuncionario.cargaHorariaFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Salário:  </span></p> <p>{{selectedFuncionario.salarioFuncionario}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Formação:  </span></p> <p>{{selectedFuncionario.formacaoFuncionario}}</p>
+            </div>
+        </div>
     </div>
 </ng-template>

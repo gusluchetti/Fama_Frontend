@@ -3,7 +3,7 @@
         <div class="align-center margin-bot">
             <h3 class="main-title" *ngIf="!editing">Lista de Cursos</h3>
         </div>
-        
+
         <div class="table-border" *ngIf="!editing">
             <thead class="table row no-margin">
                 <th class="col-sm-4"><span>Nome</span></th>
@@ -32,7 +32,7 @@
                     <input name="name" [(ngModel)]="this.selectedCurso.nomeCurso" type="text" class="form-control">
 
                     <label for="responsavel">Responsável: </label>
-                    <input name="responsavel"[(ngModel)]="this.selectedCurso.responsavelCurso" type="text" class="form-control">
+                    <input name="responsavel" [(ngModel)]="this.selectedCurso.responsavelCurso" type="text" class="form-control">
 
                     <label for="horasSemanais">Horas Semanais: </label>
                     <input name="horasSemanais" [(ngModel)]="this.selectedCurso.horasSemanaisCurso" type="number" class="form-control">
@@ -56,13 +56,25 @@
 
 <ng-template #infoModal>
     <div class="modal-header">
-      <h2>Informações Completas</h2>
+        <h2>Informações Completas</h2>
     </div>
     <div class="modal-body">
-        <p><span>ID do Curso: </span>{{selectedCurso.idCurso}}</p>
-        <p><span>Nome: </span>{{selectedCurso.nomeCurso}}</p>
-        <p><span>Responsável: </span>{{selectedCurso.responsavelCurso}}</p>
-        <p><span>Horas Semanais: </span>{{selectedCurso.horasSemanaisCurso}}</p>
-        <p><span>Descrição do Curso: </span>{{selectedCurso.descricaoCurso}}</p>
+        <div class="detailed-info">
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">ID do Curso:  </span></p> <p>{{selectedCurso.idCurso}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Nome:  </span><p><p>{{selectedCurso.nomeCurso}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Responsável:  </span></p><p>{{selectedCurso.responsavelCurso}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Horas Semanais:  </span></p><p>{{selectedCurso.horasSemanaisCurso}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Descrição do Curso:  </span></p><p>{{selectedCurso.descricaoCurso}}</p>
+            </div>
+        </div>
     </div>
 </ng-template>

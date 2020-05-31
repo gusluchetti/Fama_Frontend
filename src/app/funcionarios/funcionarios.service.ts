@@ -26,7 +26,7 @@ export class FuncionarioService {
     }
 
     obter(idFuncionario: number) {
-        return this.http.get('/api/funcionario/obter/?idCurso='+ idFuncionario, this.httpOptions);
+        return this.http.get('/api/funcionario/obter/?idFuncionario='+ idFuncionario, this.httpOptions);
     }
 
     listar() {

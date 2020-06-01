@@ -9,8 +9,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 	styleUrls: ['../app.component.css']
 })
 export class FuncionariosComponent {
-	selectedFuncionario: FuncionarioModel = null
-	emptyFuncionario = {} as FuncionarioModel
+	selectedFuncionario = {} as FuncionarioModel
 	listFuncionarios = [] as FuncionarioModel[]
 
 	editing: boolean = false
@@ -34,9 +33,7 @@ export class FuncionariosComponent {
 
 	openInfoModal(f: FuncionarioModel, modal: any) {
 		this.service.obter(f.idFuncionario).subscribe((data: any) => {
-			console.log('id fun ->', f.idFuncionario)
 			this.selectedFuncionario = data
-			console.log('fun ->', f)
 		});
 		this.modalService.open(modal)
 	}
@@ -45,11 +42,14 @@ export class FuncionariosComponent {
 		if (f != null || f != undefined) {
 			this.service.obter(f.idFuncionario).subscribe((data: any) => {
 				this.selectedFuncionario = data
-			  });
+			});
 			this.funcionarioExists = true
 		}
+		else this.funcionarioExists = false
+
 		this.changeMode()
 	}
+
 
 	onRemove(f: FuncionarioModel) {
 		this.service.excluir(f.idFuncionario).subscribe();
@@ -72,6 +72,12 @@ export class FuncionariosComponent {
 				this.listFuncionarios.push(this.selectedFuncionario)
 			}
 		}
+
+		//updating list
+		this.service.listar().subscribe((data: any) => {
+			this.listFuncionarios = data;
+		});
+
 		this.changeMode()
 	}
 }

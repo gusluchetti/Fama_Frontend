@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<button type="button" class="button" alt="Cadastrar Aluno" (click)="onEdit()">
+<button *ngIf="!editing" type="button" class="button" alt="Cadastrar Aluno" (click)="onEdit()">
     <i class="fas fa-plus"></i>
 </button>
 

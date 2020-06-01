@@ -37,7 +37,7 @@
                     <input name="name" [(ngModel)]="this.selectedFuncionario.nomeFuncionario" type="text" class="form-control">
 
                     <label for="nascimento">Data de Nascimento (DD/MM/YYYY): </label>
-                    <input name="nascimento" [(ngModel)]="this.selectedFuncionario.dataNascFuncionario" type="date" class="form-control">
+                    <input name="nascimento" [(ngModel)]="this.selectedFuncionario.dataNascFuncionario" type="text" class="form-control">
 
                     <label for="cpf">CPF: </label>
                     <input name="cpf" [(ngModel)]="this.selectedFuncionario.cpfFuncionario" type="number" class="form-control">
@@ -76,7 +76,7 @@
     </div>
 </div>
 
-<button type="button" class="button" alt="Cadastrar Funcionario" (click)="onEdit()">
+<button *ngIf="!editing" type="button" class="button" alt="Cadastrar Funcionario" (click)="onEdit()">
     <i class="fas fa-user-plus"></i>
 </button>
 

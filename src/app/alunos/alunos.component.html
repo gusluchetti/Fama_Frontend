@@ -4,27 +4,27 @@
             <div class="align-center margin-bot">
                 <h3 class="main-title" *ngIf="!editing">Lista de Alunos</h3>
             </div>
+            <div class="table-border">
+                <thead class="table row no-margin">
+                    <th class="col-sm-3">Nome</th>
+                    <th class="col-sm-3">CPF</th>
+                    <th class="col-sm-3">Telefone</th>
+                    <th class="col-md-3">Ações</th>
+                </thead>
 
-            <thead class="table row no-margin">
-                <th class="col-sm-2">ID</th>
-                <th class="col-sm-3">Nome</th>
-                <th class="col-sm-3">Data de Nascimento</th>
-                <th class="col-sm-2">Telefone</th>
-                <th class="col-md-2"></th>
-            </thead>
-
-            <tbody *ngFor="let aluno of listAlunos" class="row no-margin">
-                <td class="col-sm-2"><a>{{aluno.idAluno}}</a></td>
-                <td class="col-sm-3"><a>{{aluno.nomeAluno}}</a></td>
-                <td class="col-sm-3"><a>{{aluno.dataNascAluno}}</a></td>
-                <td class="col-sm-2"><a>{{aluno.telefoneAluno}}</a></td>
-                <td class="col-md-2 flex-center-h">
-                    <button class="btn yellow" type="button" (click)="onEdit(aluno)"><i class="fa fa-wrench"></i></button>
-                    <button class="btn red" type="button" (click)="onRemove(aluno)"><i class="fa fa-times"></i></button>
-                </td>
-            </tbody>
+                <tbody *ngFor="let aluno of listAlunos" class="row no-margin">
+                    <td class="col-sm-3"><span class="pointer"><strong (click)="openInfoModal(aluno, infoModal)">{{aluno.nomeAluno}}</strong></span></td>
+                    <td class="col-sm-3"><a>{{aluno.cpfAluno}}</a></td>
+                    <td class="col-sm-3"><a>{{aluno.telefoneAluno}}</a></td>
+                    <td class="col-md-3 flex-center-h">
+                        <button class="btn yellow" type="button" (click)="onEdit(aluno)"><i
+                                class="fa fa-wrench"></i></button>
+                        <button class="btn red" type="button" (click)="onRemove(aluno)"><i
+                                class="fa fa-times"></i></button>
+                    </td>
+                </tbody>
+            </div>
         </div>
-
         <div *ngIf="editing">
             <h3 class="main-title" *ngIf="!this.selectedAluno.idAluno">Novo Aluno</h3>
             <h3 class="main-title" *ngIf="this.selectedAluno.idAluno">Editando {{this.selectedAluno.nomeAluno}}</h3>
@@ -34,7 +34,8 @@
                     <input name="name" [(ngModel)]="this.selectedAluno.nomeAluno" type="text" class="form-control">
 
                     <label for="nascimento">Data de Nascimento (DD/MM/YYYY): </label>
-                    <input name="nascimento" [(ngModel)]="this.selectedAluno.dataNascAluno" type="date" class="form-control">
+                    <input name="nascimento" [(ngModel)]="this.selectedAluno.dataNascAluno" type="aluno"
+                        class="form-control">
 
                     <label for="cpf">CPF: </label>
                     <input name="cpf" [(ngModel)]="this.selectedAluno.cpfAluno" type="number" class="form-control">
@@ -43,23 +44,25 @@
                     <input name="rg" [(ngModel)]="this.selectedAluno.rgAluno" type="number" class="form-control">
 
                     <label for="estadoCivil">Estado Civil: </label>
-                    <input name="estadoCivil" [(ngModel)]="this.selectedAluno.estadoCivilAluno" type="text" class="form-control">
+                    <input name="estadoCivil" [(ngModel)]="this.selectedAluno.estadoCivilAluno" type="text"
+                        class="form-control">
 
                     <label for="email">Email: </label>
                     <input name="email" [(ngModel)]="this.selectedAluno.emailAluno" type="text" class="form-control">
 
                     <label for="telefone">Telefone: </label>
-                    <input name="telefone" [(ngModel)]="this.selectedAluno.telefoneAluno" type="number" class="form-control">
+                    <input name="telefone" [(ngModel)]="this.selectedAluno.telefoneAluno" type="number"
+                        class="form-control">
 
                     <label for="profissao">Profissão: </label>
-                    <input name="profissao" [(ngModel)]="this.selectedAluno.profissaoAluno" type="text" class="form-control">
-                    
-                    <!-- TODO: Selecionar N cursos para um único aluno -->
+                    <input name="profissao" [(ngModel)]="this.selectedAluno.profissaoAluno" type="text"
+                        class="form-control">
 
                 </div>
             </form>
             <div class="flex-center-h">
-                <button id="vermelho" (click)="onCancel()"> Cancelar <i class="fa fa-times"></i></button>
+                <button id="vermelho" (click)=" changeMode(); onCancel();"> Cancelar <i
+                        class="fa fa-times"></i></button>
                 <button id="verde" (click)="onFinish()"> Confirmar <i class="fa fa-check"></i></button>
             </div>
         </div>
@@ -67,6 +70,43 @@
     </div>
 </div>
 
-<button type="button" class="button" alt="Cadastrar Aluno" (click)="onEdit()">
+<button *ngIf="!editing" type="button" class="button" alt="Cadastrar Aluno" (click)="onEdit()">
     <i class="fas fa-user-plus"></i>
 </button>
+
+<ng-template #infoModal>
+    <div class="modal-header">
+        <h2>Informações Completas</h2>
+    </div>
+    <div class="modal-body">
+        <div class="detailed-info">
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">ID do Aluno:  </span></p> <p>{{selectedAluno.idAluno}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Nome:  </span></p> <p>{{selectedAluno.nomeAluno}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Data de Nascimento:  </span></p> <p>{{selectedAluno.dataNascAluno}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">CPF:  </span></p> <p>{{selectedAluno.cpfAluno}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">RG:  </span></p> <p>{{selectedAluno.rgAluno}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Estado Civil:  </span></p> <p>{{selectedAluno.estadoCivilAluno}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Email:  </span></p> <p>{{selectedAluno.emailAluno}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Telefone:  </span></p> <p>{{selectedAluno.telefoneAluno}}</p>
+            </div>
+            <div class="row v-align no-margin">
+                <p><span class="main-title margin-r">Profissão:  </span></p> <p>{{selectedAluno.profissaoAluno}}</p>
+            </div>
+        </div>
+    </div>
+</ng-template>

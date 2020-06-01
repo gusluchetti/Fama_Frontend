@@ -25,6 +25,10 @@ export class AlunoService {
         return this.http.post('/api/aluno/criar', JSON.stringify(aluno), this.httpOptions);
     }
 
+    obter(idAluno: number) {
+        return this.http.get('/api/aluno/obter/?idAluno='+ idAluno, this.httpOptions);
+    }
+
     listar() {
         return this.http.get('/api/aluno/listar');
     }

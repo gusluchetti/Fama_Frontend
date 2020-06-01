@@ -73,11 +73,12 @@ export class FuncionariosComponent {
 			}
 		}
 
+		this.changeMode()
+
 		//updating list
 		this.service.listar().subscribe((data: any) => {
 			this.listFuncionarios = data;
 		});
 
-		this.changeMode()
 	}
 }

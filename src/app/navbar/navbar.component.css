@@ -1,3 +1,7 @@
+.pointer {
+    cursor: pointer;
+}
+
 .container{
     width: 80%;
     margin: auto;

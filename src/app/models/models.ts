@@ -21,6 +21,21 @@ export interface CursoModel {
     descricaoCurso: string;
 }
 
+export interface AulaModel {
+    idAula: number;
+    idCurso: number;
+    cdDia: string;
+    dsDia: string;
+    hrInicio: string;
+    hrFim: string;
+    duracao: number;
+}
+
+export interface DiaModel {
+    cdDia: string;
+    dsDia: string;
+}
+
 export interface FuncionarioModel {
     idFuncionario: number;
     nomeFuncionario: string; 

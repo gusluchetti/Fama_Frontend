@@ -1,0 +1,27 @@
+<div class="detailed-classes">
+    <div *ngIf="!editingAula"> 
+        <span>Adicionar aula </span>  
+        <button type="button" class="button" alt="Nova Aula" (click)="onEdit()">
+            <i class="fas fa-plus"></i>
+        </button>
+        <div *ngIf="addingAula" class="row">
+            <div class="col-sm-4">
+                <select>
+                    <option *ngFor="let dia of diasSemana">{{ dia.cdDia }}</option>
+                </select>
+                <input [(ngModel)]="this.selectedAula.dsDia" type="text" class="form-control" placeholder="Dia da Semana">
+            </div>
+            <div class="col-sm-8 inline">
+                <input [(ngModel)]="this.selectedAula.hrInicio" type="text" class="form-control" placeholder="Início">
+                <input [(ngModel)]="this.selectedAula.hrFim" type="text" class="form-control" placeholder="Fim">
+            </div>
+            
+        </div>
+    </div>
+
+    <div *ngFor="let aula of listAulas">
+        <div class="row">
+            <p>{{aula.dsDia}} - {{aula.hrInicio}} ás {{aula.hrFim}}</p>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CursoModel } from '../models/models';
+import { CursoModel, AulaModel, DiaModel } from '../models/models';
 import { CursoService } from './cursos.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
@@ -9,8 +9,15 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 	styleUrls: ['../app.component.css']
 })
 export class CursosComponent {
+	diasSemana = [] as DiaModel[]
 	selectedCurso = {} as CursoModel
+	selectedAula = {} as AulaModel
 	listCursos = [] as CursoModel[]
+	listAulas = [] as AulaModel[]
+
+	addingAula: boolean = false
+	editingAula: boolean = false
+	aulaExists: boolean = false
 
 	editing: boolean = false
 	cursoExists: boolean = false
@@ -57,6 +64,24 @@ export class CursosComponent {
 		else this.cursoExists = false
 
 		this.changeMode()
+	}
+
+	onAulaEdit(a?: AulaModel) {
+		if (a == null) {
+			this.aulaExists = false
+			this.addingAula = true
+		}
+		else {
+			this.aulaExists = true
+			this.editingAula = true
+		}
+	}
+
+	onAulaRemove(a: AulaModel) {
+	}
+
+	onAulaFinish() {
+
 	}
 
 	onRemove(c: CursoModel) {

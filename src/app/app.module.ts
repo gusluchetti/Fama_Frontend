@@ -7,9 +7,11 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import { CursosComponent } from './cursos/cursos.component';
+import { AulasComponent } from './cursos/aulas/aulas.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 import { CursoService } from './cursos/cursos.service';
+import { AulaService } from './cursos/aulas/aulas.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AlunoService } from './alunos/alunos.service';
 import { FuncionarioService } from './funcionarios/funcionarios.service';
@@ -20,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     AlunosComponent,
     CursosComponent,
+    AulasComponent,
     FuncionariosComponent,
     NavbarComponent
   ],
@@ -31,6 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     AlunoService,
     CursoService,
+    AulaService,
     FuncionarioService
   ],
   providers: [],

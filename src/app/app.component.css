@@ -145,12 +145,25 @@
     color: #000;
 }
 
+.detailed-classes {
+    border: solid .5px #fafafa;
+    padding: 10px;
+}
+
 .input-display {
     background: #fafafa;
     border-radius: 6px;
     -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.inline {
+    display: inline;
 }
 
 button:hover {

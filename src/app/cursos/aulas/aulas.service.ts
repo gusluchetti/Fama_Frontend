@@ -38,6 +38,6 @@ export class AulaService {
     }
 
     diasSemana() {
-        return this.http.get('/api/aula/dias_da_semana', this.httpOptions);
+        return this.http.get('/api/aula/dias', this.httpOptions);
     }
 }

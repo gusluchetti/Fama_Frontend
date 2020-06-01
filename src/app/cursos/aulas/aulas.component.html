@@ -1,9 +1,6 @@
 <div class="detailed-classes">
     <div *ngIf="!editingAula"> 
-        <span>Adicionar aula </span>  
-        <button type="button" class="button" alt="Nova Aula" (click)="onEdit()">
-            <i class="fas fa-plus"></i>
-        </button>
+        <span>Adicionar aula <i class="fas fa-plus" (click)="onEdit()"></i></span>  
         <div *ngIf="addingAula" class="row">
             <div class="col-sm-4">
                 <select>

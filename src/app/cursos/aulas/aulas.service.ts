@@ -26,6 +26,7 @@ export class AulaService {
     }
 
     listar(idCurso: number) {
+        console.log('idCurso =>', idCurso)
         return this.http.get('/api/aula/listar/?idCurso='+ idCurso, this.httpOptions);
     }
 
@@ -37,7 +38,7 @@ export class AulaService {
         return this.http.get('/api/aula/excluir/?idAula='+ idAula, this.httpOptions);
     }
 
-    diasSemana() {
+    dias() {
         return this.http.get('/api/aula/dias', this.httpOptions);
     }
 }

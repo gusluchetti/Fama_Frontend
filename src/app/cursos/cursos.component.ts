@@ -15,6 +15,8 @@ export class CursosComponent {
 	selectedAula = {} as AulaModel
 	listCursos = [] as CursoModel[]
 	listAulas = [] as AulaModel[]
+	modalInfo = {} as CursoModel
+
 
 	addingAula: boolean = false
 	editingAula: boolean = false
@@ -46,7 +48,7 @@ export class CursosComponent {
 
 	openInfoModal(c: CursoModel, modal: any) {
 		this.service.obter(c.idCurso).subscribe((data: any) => {
-			this.selectedCurso = data
+			this.modalInfo = data
 
 			this.aulaService.listar(c.idCurso).subscribe((data: any) => {
 					this.listAulas = data

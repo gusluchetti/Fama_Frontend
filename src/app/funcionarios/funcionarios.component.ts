@@ -11,6 +11,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class FuncionariosComponent {
 	selectedFuncionario = {} as FuncionarioModel
 	listFuncionarios = [] as FuncionarioModel[]
+	modalInfo = {} as FuncionarioModel
 
 	editing: boolean = false
 	funcionarioExists: boolean = false
@@ -33,7 +34,7 @@ export class FuncionariosComponent {
 
 	openInfoModal(f: FuncionarioModel, modal: any) {
 		this.service.obter(f.idFuncionario).subscribe((data: any) => {
-			this.selectedFuncionario = data
+			this.modalInfo = data
 		});
 		this.modalService.open(modal)
 	}

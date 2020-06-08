@@ -1,22 +1,45 @@
 <div class="wrapper flex flex-center-h">
     <div class="content">
-        <div class="row margin-v">
-            <label class="margin-r">Curso: </label>
-            <select class="margin-r" name="curso" [(ngModel)]="this.selectedCurso.idCurso">
-                <option placeholder="Curso" *ngFor="let curso of cursos" [value]="curso.idCurso" ngDefaultControl>{{ curso.nomeCurso }}</option>
-            </select>
-            <button class="btn btn-success" type="button" (click)="getAulas()">Selecionar Curso</button>
-        </div>
-        <div class="row margin-v">
-            <label class="margin-r">Matrícula do Aluno: </label>
-            <input class="margin-r" name="matricula" type="number" [(ngModel)]="this.selectedAluno.idAluno" placeholder="ID Aluno">
-            <button class="btn btn-success" type="button" (click)="getAluno()">Selecionar Aluno</button>
-        </div>
-        <div class="content" *ngIf="cursoWasSelected && alunoWasSelected">
-            <div class="row">
-                <div *ngFor="let aula of aulas">
-                    <p>nice porra</p>
+        <div class="two-halves-container">
+            <div class="half right-border">
+                <div class="align-center"><h3 class="main-title margin-bot">Adicionar Aluno em Curso</h3></div>
+                <div class="row margin-v">
+                    <label class="margin-r">Curso: </label>
+                    <select class="margin-r" name="curso" [(ngModel)]="this.selectedCurso.idCurso" placeholder="Curso">
+                        <option *ngFor="let curso of cursos" [value]="curso.idCurso" placeholder="Curso" ngDefaultControl>{{ curso.nomeCurso }}</option>
+                    </select>
+                    <button class="btn btn-success" type="button" (click)="getAulas()">Selecionar Curso</button>
+                    <p *ngIf="cursoWasSelected" class="green">Curso selecionado!</p>
                 </div>
+                <div class="row margin-v">
+                    <label class="margin-r">Matrícula do Aluno: </label>
+                    <input class="margin-r" name="matricula" type="number" [(ngModel)]="this.selectedAluno.idAluno" placeholder="ID Aluno">
+                    <button class="btn btn-success" type="button" (click)="getAluno()">Selecionar Aluno</button>
+                    <p *ngIf="alunoWasSelected" class="green">Aluno selecionado!</p>
+                </div>
+
+                <div class="row margin-v" *ngIf="cursoWasSelected && alunoWasSelected">
+                    <div class="block"*ngFor="let aula of aulas">
+                        <div class="block">
+                            <label>
+                                <input type="checkbox" [value]="aula.idAula" (change)="addSelectedAulas($event.target.value, $event.target.checked)"/>
+                                {{aula.dsDia}} - {{aula.hrInicio}} -> {{aula.hrFim}}
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-success" type="button" (click)="adicionarAluno()">Adicionar Aluno</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="half">
+                <div class="align-center"><h3 class="main-title margin-bot">Marcar Presença</h3></div>
+                <div>
+
+                </div>
+
             </div>
         </div>
     </div>

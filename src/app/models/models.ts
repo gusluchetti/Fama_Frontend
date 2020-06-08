@@ -51,3 +51,9 @@ export class FuncionarioModel {
     formacaoFuncionario: string; 
     idEndereco: number; 
 }
+
+export class PresencaModel {
+	public idAulas: number[];
+	public idAluno: number;
+    public Aluno_Presente: number;
+}

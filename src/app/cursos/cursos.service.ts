@@ -31,7 +31,6 @@ export class CursoService {
     }
 
     obter(idCurso: number) {
-        console.log('hey! inside service')
         return this.http.get(`/api/curso/obter/?idCurso=${idCurso}`, this.httpOptions);
     }
 

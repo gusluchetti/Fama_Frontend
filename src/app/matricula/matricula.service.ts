@@ -1,7 +1,9 @@
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 import { Injectable, NgModule } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ActivatedRoute } from '@angular/router';
-import { AlunoModel, AulaModel } from '../models/models';
+import { CursoModel, AulaModel, PresencaModel } from '../models/models';
 
 @NgModule()
 export class MatriculaService {
@@ -21,11 +23,11 @@ export class MatriculaService {
         private route: ActivatedRoute
     ) { }
 
-    adicionar(aluno: AlunoModel) {
+    adicionar(aluno: PresencaModel) {
         return this.http.post('/api/matricula/adicionar', JSON.stringify(aluno), this.httpOptions);
     }
 
-    remover(aluno: AlunoModel, aula: AulaModel) {
-        return this.http.get(`/api/matricula/remover/?idAluno=${aluno.idAluno}&?idAula=${aula.idAula}`, this.httpOptions);
-    }
+    // remover(aluno: AlunoModel, aula: AulaModel) {
+    //     return this.http.get(`/api/matricula/remover/?idAluno=${aluno.idAluno}&?idAula=${aula.idAula}`, this.httpOptions);
+    // }
 }

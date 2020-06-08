@@ -53,18 +53,19 @@ export class AlunosComponent {
 	onEdit(a?: AlunoModel) {
 		if (a != null || a != undefined) {
 			this.service.obter(a.idAluno)
-			.subscribe((data: any) => {
+			.subscribe(
+			(data: any) => {
 				this.selectedAluno = data
 			},
-			(error) => {  },
-			() => {
-				this.changeMode()
-			}
-			);
-			
-			this.alunoExists = true
+			(error) => { console.log('oh no!') },
+			() => { 
+				this.alunoExists = true
+				this.changeMode() 
+			});
 		}
+
 		else this.alunoExists = false
+		this.changeMode()
 	}
 
 	onRemove(a: AlunoModel) {

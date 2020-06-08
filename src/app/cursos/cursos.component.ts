@@ -75,14 +75,15 @@ export class CursosComponent {
 			(data: any) => {
 				this.selectedCurso = data
 			},
-			(error) => {  },
-			() => {
-				this.changeMode()
+			(error) => { console.log('oh no!') },
+			() => { 
+				this.cursoExists = true
+				this.changeMode() 
 			});
-
-			this.cursoExists = true
 		}
+
 		else this.cursoExists = false
+		this.changeMode()
 	}
 
 	onRemove(c: CursoModel) {

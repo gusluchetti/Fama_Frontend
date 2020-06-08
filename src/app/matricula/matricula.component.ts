@@ -20,7 +20,9 @@ export class MatriculaComponent {
 	aulas = [] as AulaModel[];
 
 	ngOnInit() {
-		this.cursoService.listar().subscribe((data: any) => {
+		this.cursoService.listar()
+		.subscribe(
+		(data: any) => {
 			this.cursos = data;
 		});
 	}

@@ -52,22 +52,22 @@ export class FuncionariosComponent {
 		this.selectedFuncionario = null
 	}
 
-	onEdit(a?: FuncionarioModel) {
-		if (a != null || a != undefined) {
-			this.service.obter(a.idFuncionario)
+	onEdit(f?: FuncionarioModel) {
+		if (f != null || f != undefined) {
+			this.service.obter(f.idFuncionario)
 			.subscribe(
-				(data: any) => {
-					this.selectedFuncionario = data
-				},
-				(error) => {  },
-				() => {
-					this.changeMode()
-				}
-			);
-			
-			this.funcionarioExists = true
+			(data: any) => {
+				this.selectedFuncionario = data
+			},
+			(error) => { console.log('oh no!') },
+			() => { 
+				this.funcionarioExists = true
+				this.changeMode() 
+			});
 		}
+
 		else this.funcionarioExists = false
+		this.changeMode()
 	}
 
 

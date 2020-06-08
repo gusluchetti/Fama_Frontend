@@ -8,7 +8,6 @@ import { CursoModel, AulaModel } from '../models/models';
 @NgModule()
 export class CursoService {
 
-    private subscriber: any;
     curso = {} as CursoModel;
     lista = [] as CursoModel[];
 
@@ -31,12 +30,9 @@ export class CursoService {
         return this.http.post('/api/curso/criar', JSON.stringify(curso), this.httpOptions);
     }
 
-    // obter(idCurso: number) {
-    //     return this.http.get('/api/curso/obter/?idCurso='+ idCurso, this.httpOptions);
-    // }
-
     obter(idCurso: number) {
-        return this.http.get('/api/curso/obter/?idCurso='+ idCurso, this.httpOptions);
+        console.log('hey! inside service')
+        return this.http.get(`/api/curso/obter/?idCurso=${idCurso}`, this.httpOptions);
     }
 
     listar() {

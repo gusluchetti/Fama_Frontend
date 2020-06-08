@@ -54,7 +54,23 @@ export class AulasComponent {
 	}
 
 	onFinish() {
+		this.selectedAula.idCurso = this.curso.idCurso
+		console.log('AULA = ', this.selectedAula)
 
+		this.service.criar(this.selectedAula)
+			.subscribe(
+				() => { 
+					this.listAulas.push(this.selectedAula) 
+					
+					this.service.listar(this.curso.idCurso)
+					.subscribe(
+					(data: any) => {
+						this.listAulas = data;
+					});
+
+					this.addingAula = false
+				}
+			);
 	}
 
 }

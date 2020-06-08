@@ -1,24 +1,28 @@
+<div class= "detailed-classes">
+    <p class="main-title margin-r">Aulas: </p>
+    <div *ngFor="let aula of listAulas">
+        <span class="margin-r-l">{{aula.dsDia}} - {{aula.hrInicio}} até {{aula.hrFim}}</span>
+    </div>
+</div>
+
 <div class="detailed-classes">
     <div *ngIf="!editingAula"> 
-        <span>Adicionar aula <i class="fas fa-plus" (click)="onEdit()"></i></span>  
+        <span>Adicionar aula 
+            <i *ngIf ="!addingAula" class="margin-r pointer fas fa-plus" (click)="onEdit();"></i>
+            <i *ngIf ="addingAula" class="red margin-r pointer fas fa-times" (click)="onEdit(); addingAula = !addingAula;"></i>
+            <i *ngIf ="addingAula" class="green margin-r pointer fas fa-check" (click)="onFinish()"></i>
+        </span>  
         <div *ngIf="addingAula" class="row">
             <div class="col-sm-4">
-                <select>
-                    <option *ngFor="let dia of diasSemana">{{ dia.cdDia }}</option>
+                <select name="dia" [(ngModel)]="this.selectedAula.cdDia">
+                    <option placeholder="Dia" *ngFor="let dia of diasSemana" [value]="dia.cdDia" ngDefaultControl>{{ dia.dsDia }}</option>
                 </select>
-                <input [(ngModel)]="this.selectedAula.dsDia" type="text" class="form-control" placeholder="Dia da Semana">
             </div>
             <div class="col-sm-8 inline">
-                <input [(ngModel)]="this.selectedAula.hrInicio" type="text" class="form-control" placeholder="Início">
-                <input [(ngModel)]="this.selectedAula.hrFim" type="text" class="form-control" placeholder="Fim">
+                <input name="inicio" [(ngModel)]="this.selectedAula.hrInicio" type="text" class="form-control" placeholder="Início" ngDefaultControl>
+                <input name="fim" [(ngModel)]="this.selectedAula.hrFim" type="text" class="form-control" placeholder="Fim" ngDefaultControl>
             </div>
             
-        </div>
-    </div>
-
-    <div *ngFor="let aula of listAulas">
-        <div class="row">
-            <p>{{aula.dsDia}} - {{aula.hrInicio}} ás {{aula.hrFim}}</p>
         </div>
     </div>
 </div>

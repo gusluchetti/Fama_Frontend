@@ -84,7 +84,12 @@ export class AlunosComponent {
 		if (this.alunoExists) {
 			this.service.alterar(this.selectedAluno)
 			.subscribe(
-				() => { console.log('Aluno alterado com sucesso!') }
+				() => { 
+					this.service.listar().subscribe((data: any) => {
+						this.listAlunos = data;
+					});
+					console.log('Aluno alterado com sucesso!') 
+				}
 			);
 		}
 		else {

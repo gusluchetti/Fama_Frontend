@@ -88,7 +88,12 @@ export class FuncionariosComponent {
 		if (this.funcionarioExists) {
 			this.service.alterar(this.selectedFuncionario)
 			.subscribe(
-				() => { console.log('Funcionario alterado com sucesso!') }
+				() => { 
+					this.service.listar().subscribe((data: any) => {
+						this.listFuncionarios = data;
+					});
+					console.log('Funcionario alterado com sucesso!');
+				}
 			);
 		}
 		else {

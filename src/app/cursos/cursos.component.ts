@@ -71,7 +71,8 @@ export class CursosComponent {
 	onEdit(c?: CursoModel) {
 		if (c != null || c != undefined) {
 			this.service.obter(c.idCurso)
-			.subscribe((data: any) => {
+			.subscribe(
+			(data: any) => {
 				this.selectedCurso = data
 			},
 			(error) => {  },
@@ -101,7 +102,12 @@ export class CursosComponent {
 		if (this.cursoExists) {
 			this.service.alterar(this.selectedCurso)
 			.subscribe(
-				() => { console.log('Curso alterado com sucesso!') }
+				() => { 
+					this.service.listar().subscribe((data: any) => {
+						this.listCursos = data;
+					});
+					console.log('Curso alterado com sucesso!')
+			 }
 			);
 		}
 		else {

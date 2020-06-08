@@ -9,12 +9,14 @@ import { AlunosComponent } from './alunos/alunos.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { AulasComponent } from './cursos/aulas/aulas.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { MatriculaComponent } from './matricula/matricula.component';
 
 import { CursoService } from './cursos/cursos.service';
 import { AulaService } from './cursos/aulas/aulas.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AlunoService } from './alunos/alunos.service';
 import { FuncionarioService } from './funcionarios/funcionarios.service';
+import { MatriculaService } from './matricula/matricula.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -24,6 +26,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CursosComponent,
     AulasComponent,
     FuncionariosComponent,
+    MatriculaComponent,
     NavbarComponent
   ],
   imports: [
@@ -35,7 +38,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AlunoService,
     CursoService,
     AulaService,
-    FuncionarioService
+    FuncionarioService,
+    MatriculaService
   ],
   providers: [],
   bootstrap: [AppComponent]

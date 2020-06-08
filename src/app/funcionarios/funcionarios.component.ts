@@ -29,51 +29,77 @@ export class FuncionariosComponent {
 
 	}
 
-	changeMode() { this.editing = !this.editing }
-	onCancel() { this.selectedFuncionario = {} as FuncionarioModel }
-
-	openInfoModal(f: FuncionarioModel, modal: any) {
-		this.service.obter(f.idFuncionario).subscribe((data: any) => {
-			this.modalInfo = data
-		});
-		this.modalService.open(modal)
+	
+	onCancel() { 
+		this.selectedFuncionario = {} as FuncionarioModel 
 	}
 
-	onEdit(f?: FuncionarioModel) {
-		if (f != null || f != undefined) {
-			this.service.obter(f.idFuncionario).subscribe((data: any) => {
-				this.selectedFuncionario = data
-			});
+	changeMode() { 
+		this.editing = !this.editing 
+	}
+
+	openInfoModal(f: FuncionarioModel, modal: any) {
+		this.service.obter(f.idFuncionario)
+		.subscribe(
+			(data: any) => { this.modalInfo = data },
+			(error) => {  },
+			() => { this.modalService.open(modal) }
+		)
+	}
+
+	dismissModal() {
+		this.modalService.dismissAll()
+		this.selectedFuncionario = null
+	}
+
+	onEdit(a?: FuncionarioModel) {
+		if (a != null || a != undefined) {
+			this.service.obter(a.idFuncionario)
+			.subscribe(
+				(data: any) => {
+					this.selectedFuncionario = data
+				},
+				(error) => {  },
+				() => {
+					this.changeMode()
+				}
+			);
+			
 			this.funcionarioExists = true
 		}
 		else this.funcionarioExists = false
-
-		this.changeMode()
 	}
 
 
 	onRemove(f: FuncionarioModel) {
-		this.service.excluir(f.idFuncionario).subscribe();
-		let index = this.listFuncionarios.indexOf(f)
-
-		if (index != null || index != undefined) {
-			this.listFuncionarios.splice(index, 1)
-		}
+		this.service.excluir(f.idFuncionario)
+		.subscribe(
+			() => {
+				let index = this.listFuncionarios.indexOf(f)
+				if (index != null || index != undefined) {
+					this.listFuncionarios.splice(index, 1)
+				}
+				console.log('Funcionario removido com sucesso!')
+			}
+		);	
 	}
 
 	onFinish() {
 		if (this.funcionarioExists) {
-			this.service.alterar(this.selectedFuncionario).subscribe((data: any) => { });
+			this.service.alterar(this.selectedFuncionario)
+			.subscribe(
+				() => { console.log('Funcionario alterado com sucesso!') }
+			);
 		}
 		else {
-			this.service.criar(this.selectedFuncionario).subscribe((data: any) => { });
-			let success = true;
-
-			if (success) {
-				this.listFuncionarios.push(this.selectedFuncionario)
-			}
+			this.service.criar(this.selectedFuncionario)
+			.subscribe(
+				() => { 
+					this.listFuncionarios.push(this.selectedFuncionario) 
+					console.log('Funcionario criado com sucesso!')
+				}
+			);
 		}
-
 		this.changeMode()
 	}
 }

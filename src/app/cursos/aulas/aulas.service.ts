@@ -26,7 +26,7 @@ export class AulaService {
     }
 
     listar(idCurso: number) {
-        console.log('idCurso =>', idCurso)
+        console.log('curso em servico aula', idCurso)
         return this.http.get('/api/aula/listar/?idCurso='+ idCurso, this.httpOptions);
     }
 

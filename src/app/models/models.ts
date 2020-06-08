@@ -1,4 +1,4 @@
-export interface AlunoModel {
+export class AlunoModel {
     idAluno: number;
     dataNascAluno: number;
     cpfAluno: string;
@@ -12,7 +12,7 @@ export interface AlunoModel {
     idEndereco: number;
 }
 
-export interface CursoModel {
+export class CursoModel {
     idCurso: number;
     nomeCurso: string;
     responsavelCurso: string;
@@ -21,7 +21,7 @@ export interface CursoModel {
     descricaoCurso: string;
 }
 
-export interface AulaModel {
+export class AulaModel {
     idAula: number;
     idCurso: number;
     cdDia: string;
@@ -31,12 +31,12 @@ export interface AulaModel {
     duracao: number;
 }
 
-export interface DiaModel {
+export class DiaModel {
     cdDia: string;
     dsDia: string;
 }
 
-export interface FuncionarioModel {
+export class FuncionarioModel {
     idFuncionario: number;
     nomeFuncionario: string; 
     dataNascFuncionario: number; 

@@ -4,6 +4,7 @@ import { CursoService } from './cursos.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AulaService } from './aulas/aulas.service';
 
+
 @Component({
 	selector: 'app-cursos',
 	templateUrl: './cursos.component.html',
@@ -47,14 +48,19 @@ export class CursosComponent {
 	}
 
 	openInfoModal(c: CursoModel, modal: any) {
-		this.service.obter(c.idCurso).subscribe((data: any) => {
-			this.modalInfo = data
-
-			this.aulaService.listar(c.idCurso).subscribe((data: any) => {
-					this.listAulas = data
-			})
-		});
-		this.modalService.open(modal)
+		this.service.obter(c.idCurso)
+		.subscribe(
+			(data: any) => { this.modalInfo = data },
+			(error) => {  },
+			() => {
+				this.aulaService.listar(c.idCurso)
+				.subscribe(
+					(data: any) => { this.listAulas = data },
+					(error: any) => {  }, 
+					() => { this.modalService.open(modal) } 
+				)
+			}
+		)
 	}
 
 	dismissModal() {
@@ -64,37 +70,48 @@ export class CursosComponent {
 
 	onEdit(c?: CursoModel) {
 		if (c != null || c != undefined) {
-			this.service.obter(c.idCurso).subscribe((data: any) => {
+			this.service.obter(c.idCurso)
+			.subscribe((data: any) => {
 				this.selectedCurso = data
+			},
+			(error) => {  },
+			() => {
+				this.changeMode()
 			});
+
 			this.cursoExists = true
 		}
 		else this.cursoExists = false
-
-		this.changeMode()
 	}
 
 	onRemove(c: CursoModel) {
-		this.service.excluir(c.idCurso).subscribe();
-		let index = this.listCursos.indexOf(c)
-
-		if (index != null || index != undefined) {
-			this.listCursos.splice(index, 1)
-		}
+		this.service.excluir(c.idCurso)
+		.subscribe(
+			() => {
+				let index = this.listCursos.indexOf(c)
+				if (index != null || index != undefined) {
+					this.listCursos.splice(index, 1)
+				}
+				console.log('Curso removido com sucesso!')
+			}
+		);	
 	}
 
 	onFinish() {
 		if (this.cursoExists) {
-			this.service.alterar(this.selectedCurso).subscribe((data: any) => { });
-			let success = true;
-
-			if (success) { }
+			this.service.alterar(this.selectedCurso)
+			.subscribe(
+				() => { console.log('Curso alterado com sucesso!') }
+			);
 		}
 		else {
-			this.service.criar(this.selectedCurso).subscribe((data: any) => { });
-			let success = true;
-
-			if (success) this.listCursos.push(this.selectedCurso)
+			this.service.criar(this.selectedCurso)
+			.subscribe(
+				() => { 
+					this.listCursos.push(this.selectedCurso) 
+					console.log('Curso criado com sucesso!')
+				}
+			);
 		}
 		this.changeMode()
 	}

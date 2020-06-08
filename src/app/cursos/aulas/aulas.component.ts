@@ -27,8 +27,6 @@ export class AulasComponent {
 			this.diasSemana = dias
 		})
 
-		console.log('curso =>', this.curso)
-
 		this.service.listar(this.curso.idCurso).subscribe((aulas: AulaModel[]) => {
 			this.listAulas = aulas;
 		});

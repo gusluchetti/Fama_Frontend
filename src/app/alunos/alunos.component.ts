@@ -37,50 +37,66 @@ export class AlunosComponent {
 	}
 
 	openInfoModal(a: AlunoModel, modal: any) {
-		this.service.obter(a.idAluno).subscribe((data: any) => {
-			this.modalInfo = data
-		});
-		this.modalService.open(modal)
+		this.service.obter(a.idAluno)
+		.subscribe(
+			(data: any) => { this.modalInfo = data },
+			(error) => {  },
+			() => { this.modalService.open(modal) }
+		)
+	}
+
+	dismissModal() {
+		this.modalService.dismissAll()
+		this.selectedAluno = null
 	}
 
 	onEdit(a?: AlunoModel) {
 		if (a != null || a != undefined) {
-			this.service.obter(a.idAluno).subscribe((data: any) => {
+			this.service.obter(a.idAluno)
+			.subscribe((data: any) => {
 				this.selectedAluno = data
-			});
+			},
+			(error) => {  },
+			() => {
+				this.changeMode()
+			}
+			);
+			
 			this.alunoExists = true
 		}
-		this.changeMode()
+		else this.alunoExists = false
 	}
 
-	onRemove(c: AlunoModel) {
-		this.service.excluir(c.idAluno).subscribe();
-		let index = this.listAlunos.indexOf(c)
-
-		if (index != null || index != undefined) {
-			this.listAlunos.splice(index, 1)
-		}
-	}
-
-	async onFinish() {
-		if (this.alunoExists) {
-			this.service.alterar(this.selectedAluno).subscribe((data: any) => { });
-			let success = true;
-
-			if (success) {
-				let index = this.listAlunos.indexOf(this.selectedAluno)
-				this.listAlunos[index] = this.selectedAluno
+	onRemove(a: AlunoModel) {
+		this.service.excluir(a.idAluno)
+		.subscribe(
+			() => {
+				let index = this.listAlunos.indexOf(a)
+				if (index != null || index != undefined) {
+					this.listAlunos.splice(index, 1)
+				}
+				console.log('Aluno removido com sucesso!')
 			}
+		);	
+	}
+
+	onFinish() {
+		if (this.alunoExists) {
+			this.service.alterar(this.selectedAluno)
+			.subscribe(
+				() => { console.log('Aluno alterado com sucesso!') }
+			);
 		}
 		else {
-			this.service.criar(this.selectedAluno).subscribe((data: any) => { });
-			let success = true;
-
-			if (success) {
-				this.listAlunos.push(this.selectedAluno)
-			}
+			this.service.criar(this.selectedAluno)
+			.subscribe(
+				() => { 
+					this.listAlunos.push(this.selectedAluno) 
+					console.log('Aluno criado com sucesso!')
+				}
+			);
 		}
-		this.changeMode();	
+		this.changeMode()
 	}
 }
 

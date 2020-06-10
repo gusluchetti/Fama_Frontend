@@ -1,2 +1,5 @@
 <app-navbar></app-navbar>
+<div *ngIf="_router.url == '/'" class="margin-v">
+    <h3 class="main-title align-center">Selecione uma aba.</h3>
+</div>
 <router-outlet></router-outlet>

@@ -95,4 +95,22 @@ export class MatriculaComponent {
 			},
 		)
 	}
+
+	marcarPresenca() {
+		this.matricula.idAulas = this.selectedAulas
+		this.matricula.idAluno = this.selectedAluno.idAluno
+		
+		this.service.adicionar(this.matricula)
+		.subscribe(
+			(data) => {
+
+			},
+			(error) => {
+
+			},
+			() => {
+				console.log('Presenca da aula marcada com sucesso!')
+			},
+		)
+	}
 }

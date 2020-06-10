@@ -12,14 +12,19 @@ import { AulaService } from '../cursos/aulas/aulas.service';
 	styleUrls: ['../app.component.css']
 })
 export class MatriculaComponent {
+	presenca = {} as PresencaModel;
 	cursoWasSelected: boolean = false;
 	alunoWasSelected: boolean = false;
 	selectedAluno = {} as AlunoModel;
 	selectedCurso = {} as CursoModel;
 	cursos = [] as CursoModel[];
 	aulas = [] as AulaModel[];
+	selectedAula = {} as AulaModel;
 	selectedAulas = [] as number[];
 	matricula = {} as PresencaModel;
+	students = [] as AlunoModel[];
+	selectedIdAlunos = [] as number[];
+
 
 	ngOnInit() {
 		this.cursoService.listar()
@@ -80,8 +85,8 @@ export class MatriculaComponent {
 
 	adicionarAluno() {
 		this.matricula.idAulas = this.selectedAulas
-		this.matricula.idAluno = this.selectedAluno.idAluno
-		
+		this.matricula[0].idAluno = this.selectedAluno.idAluno
+
 		this.service.adicionar(this.matricula)
 		.subscribe(
 			(data) => {
@@ -96,21 +101,62 @@ export class MatriculaComponent {
 		)
 	}
 
-	marcarPresenca() {
-		this.matricula.idAulas = this.selectedAulas
-		this.matricula.idAluno = this.selectedAluno.idAluno
-		
-		this.service.adicionar(this.matricula)
-		.subscribe(
-			(data) => {
+	currentAula(idAula: any) {
+		if(idAula == this.selectedAula.idAula) {
+			this.students = [] as AlunoModel[]
+		}
 
+		this.selectedAula.idAula = idAula
+		this.service.listar(idAula)
+		.subscribe(
+			(data: any) => {
+				this.students = data
 			},
 			(error) => {
 
 			},
 			() => {
-				console.log('Presenca da aula marcada com sucesso!')
+				console.log('Alunos para essa aula adquiridos com sucesso!')
+			}
+		)
+	}
+
+	selectedStudents(student: any, isChecked: boolean) {
+		if (this.selectedIdAlunos.includes(student.idAluno) && !isChecked) {
+			this.selectedIdAlunos.splice(this.selectedIdAlunos.indexOf(student), 1)
+		}
+		else if(!this.selectedIdAlunos.includes(student) && isChecked) {
+			this.selectedIdAlunos.push(student)
+		}
+
+		console.log(this.selectedIdAlunos)
+	}
+
+	marcarPresenca() {
+		this.presenca.idAlunos = [] as number[]
+		this.presenca.idAulas = [] as number[]
+
+		console.log('id students = ', this.selectedIdAlunos)
+		this.selectedIdAlunos.forEach((it) => {
+			this.presenca.idAlunos.push(it)
+		})
+
+		console.log('id aula = ', this.selectedAula)
+		this.presenca.idAulas[0] = this.selectedAula.idAula
+		
+		console.log('presenca', this.presenca)
+
+		this.service.marcar(this.presenca)
+		.subscribe(
+			(data: any) => {
+				
 			},
+			(error) => {
+
+			},
+			() => {
+				console.log('Presenca marcada com sucesso!')
+			}
 		)
 	}
 }

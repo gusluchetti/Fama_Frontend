@@ -27,7 +27,12 @@ export class MatriculaService {
         return this.http.post('/api/matricula/adicionar', JSON.stringify(aluno), this.httpOptions);
     }
 
-    marcar(alunos: PresencaModel[], aula: AulaModel) {
-      return this.http.post('/api/matricula/marcar', JSON.stringify(alunos), this.httpOptions);
-  }
+    listar(idAula: number) {
+        return this.http.get(`/api/matricula/listar/?idAula=${idAula}`, this.httpOptions);
+	}
+	
+	marcar(presenca: PresencaModel){
+		return this.http.post(`/api/matricula/presenca`, JSON.stringify(presenca), this.httpOptions);
+	}
+
 }

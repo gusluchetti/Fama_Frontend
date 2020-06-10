@@ -56,16 +56,19 @@ export class AlunosComponent {
 			.subscribe(
 			(data: any) => {
 				this.selectedAluno = data
+				this.changeMode() 
 			},
 			(error) => { console.log('oh no!') },
 			() => { 
 				this.alunoExists = true
-				this.changeMode() 
 			});
 		}
 
-		else this.alunoExists = false
-		this.changeMode()
+		else {
+			this.alunoExists = false
+			this.changeMode()
+		}
+		
 	}
 
 	onRemove(a: AlunoModel) {

@@ -58,16 +58,17 @@ export class FuncionariosComponent {
 			.subscribe(
 			(data: any) => {
 				this.selectedFuncionario = data
+				this.changeMode() 
 			},
 			(error) => { console.log('oh no!') },
 			() => { 
 				this.funcionarioExists = true
-				this.changeMode() 
 			});
 		}
-
-		else this.funcionarioExists = false
-		this.changeMode()
+		else {
+			this.funcionarioExists = false
+			this.changeMode()
+		}
 	}
 
 

@@ -3,49 +3,70 @@
         <div class="two-halves-container">
             <div class="half right-border">
                 <div class="align-center"><h3 class="main-title margin-bot">Adicionar Aluno em Curso</h3></div>
-                <div class="row margin-v">
-                    <label class="margin-r">Curso: </label>
-                    <select class="margin-r" name="curso" [(ngModel)]="this.selectedCurso.idCurso" placeholder="Curso">
-                        <option *ngFor="let curso of cursos" [value]="curso.idCurso" placeholder="Curso" ngDefaultControl>{{ curso.nomeCurso }}</option>
-                    </select>
-                    <button class="btn btn-success" type="button" (click)="getAulas()">Selecionar Curso</button>
-                    <p *ngIf="cursoWasSelected" class="green">Curso selecionado!</p>
-                </div>
-                <div class="row margin-v">
-                    <label class="margin-r">Matrícula do Aluno: </label>
-                    <input class="margin-r" name="matricula" type="number" [(ngModel)]="this.selectedAluno.idAluno" placeholder="ID Aluno">
-                    <button class="btn btn-success" type="button" (click)="getAluno()">Selecionar Aluno</button>
-                    <p *ngIf="alunoWasSelected" class="green">Aluno selecionado!</p>
-                </div>
 
-                <div class="row margin-v" *ngIf="cursoWasSelected && alunoWasSelected">
-                    <div class="block"*ngFor="let aula of aulas">
-                        <div class="block full-width">
-                            <label>
-                                <input type="checkbox" [value]="aula.idAula" (change)="addSelectedAulas($event.target.value, $event.target.checked)"/>
-                                {{aula.dsDia}} - {{aula.hrInicio}} -> {{aula.hrFim}}
-                            </label>
+                <table class="table-form">
+                    <tr class="table-form-row">
+                        <td><label class="align-center ">Curso: </label></td>
+                        <td>
+                        <select class="margin-r full-width" name="curso" [(ngModel)]="this.selectedCurso.idCurso" placeholder="Curso">
+                            <option *ngFor="let curso of cursos" [value]="curso.idCurso" placeholder="Curso" ngDefaultControl>{{ curso.nomeCurso }}</option>
+                        </select>
+                        </td>
+                        <td><button class="btn btn-success" type="button" (click)="getAulas()">Selecionar Curso</button></td>
+                    </tr>
+                    <tr class="table-form-row">
+                        <td><label class="margin-r">Matrícula do Aluno: </label></td>
+                        <td><input class="margin-r full-width" name="matricula" type="number" [(ngModel)]="this.selectedAluno.idAluno" placeholder="ID Aluno"></td>
+                        <td><button class="btn btn-success" type="button" (click)="getAluno()">Selecionar Aluno</button></td>
+                    </tr>
+                </table>
+                
+                <div *ngIf="cursoWasSelected && alunoWasSelected">
+                    <table class="table-form">
+                        <div *ngFor="let aula of aulas">
+                            <tr>
+                                <td>
+                                    <label>
+                                        <input class="margin-r" type="checkbox" [value]="aula.idAula" (change)="addSelectedAulas($event.target.value, $event.target.checked)"/>{{aula.dsDia}} - {{aula.hrInicio}} -> {{aula.hrFim}}
+                                    </label>
+                                </td>
+                            </tr>
                         </div>
-                    </div>
-                    <div>
-                        <button class="btn btn-success" type="button" (click)="adicionarAluno()">Adicionar Aluno</button>
-                    </div>
+                        <tr>
+                            <button class="btn btn-success margin-v float-left  " type="button" (click)="adicionarAluno()">Adicionar Aluno</button>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
-
             <div class="half">
                 <div class="align-center"><h3 class="main-title margin-bot">Marcar Presença</h3></div>
-                <div class="row margin-v" *ngIf="cursoWasSelected">
-                    <div class="block" *ngFor="let aula of aulas">
-                        <div class="block">
-                            <p class="full-width">{{aula.dsDia}} - {{aula.hrInicio}} -> {{aula.hrFim}}</p>
-                        </div>
+                <table *ngIf="cursoWasSelected">
+                    <div class="btn-group-toggle" data-toggle="buttons" *ngFor="let aula of aulas">
+                        <tr>
+                            <td>
+                                <label>
+                                    <input class="margin-r" type="checkbox" [value]="aula.idAula" (change)="currentAula($event.target.value)"/>{{aula.dsDia}} - {{aula.hrInicio}} -> {{aula.hrFim}}
+                                </label>
+                            </td>
+                        </tr>
                     </div>
-                    <div>
-                        <button class="btn btn-success" type="button" (click)="marcarPresenca()">Marcar presença</button>
+                    <tr>
+                        <label class="student-display">Alunos:</label>
+                    </tr>
+                    <div class="margin-v"*ngFor="let student of students">
+                        <tr class="student-border">
+                            <td class="no-border padding">
+                                <label class="no-margin">
+                                    <input class="margin-r" type="checkbox" [value]="student.idAluno" (change)="selectedStudents($event.target.value, $event.target.checked)"/>{{student.idAluno}}/{{student.nomeAluno}}
+                                </label>
+                            </td>
+                        </tr>
                     </div>
-                </div>
+                    <tr>
+                        <button class="btn btn-success margin-v" type="button" (click)="marcarPresenca()">Marcar presença</button>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

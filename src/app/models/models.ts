@@ -54,6 +54,6 @@ export class FuncionarioModel {
 
 export class PresencaModel {
 	public idAulas: number[];
-	public idAluno: number;
+	public idAlunos: number[];
     public Aluno_Presente: number;
 }
